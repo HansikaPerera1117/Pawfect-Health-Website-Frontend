@@ -1,13 +1,23 @@
 import React from "react";
 import MainLayout from "../layout/MainLayout";
-import { Button, Col, Row } from "antd";
+import { Button, Card, Col, Row } from "antd";
 import mainDogImage from "../assets/images/mainImage01.png";
 import pawBgImage from "../assets/images/paw_bg.png";
+import mapImage from "../assets/images/map.png";
 import introImage from "../assets/images/introSecImg.png";
+import vetImg01 from "../assets/images/vets/vet01.png";
+import vetImg02 from "../assets/images/vets/vet02.png";
+import vetImg03 from "../assets/images/vets/vet03.png";
+import vetImg04 from "../assets/images/vets/vet04.png";
+import vetImg05 from "../assets/images/vets/vet05.png";
+import boneImg from "../assets/images/boneImg.png";
+import pawImg from "../assets/images/pawImg.png";
 import "../styles/homePageStyles.scss";
 import "../styles/common/commonStyles.scss";
 
 const HomePage = () => {
+  const { Meta } = Card;
+
   return (
     <MainLayout>
       <div className="homepage-container">
@@ -84,6 +94,7 @@ const HomePage = () => {
           <h1 className="containerBox  font-size-2 font-weight-semi-bold text-center text-lg-start font-family-2">
             Pawfect Health
           </h1>
+
           <h1 className="containerBox  font-size-4 font-weight-semi-bold text-center text-lg-start text-gray font-family-2">
             Care Tailored for Every Paw
           </h1>
@@ -94,7 +105,15 @@ const HomePage = () => {
             style={{ right: 0 }}
           />
           <Row className="containerBox text-center text-lg-start mx-3 mx-lg-0 flex-column-reverse flex-xl-row">
-            <Col xs={24} sm={24} md={24} lg={24} xl={11} xxl={11} className="d-flex justify-content-center align-items-start">
+            <Col
+              xs={24}
+              sm={24}
+              md={24}
+              lg={24}
+              xl={11}
+              xxl={11}
+              className="d-flex justify-content-center align-items-start"
+            >
               <img
                 src={introImage}
                 alt="paw bg"
@@ -104,7 +123,15 @@ const HomePage = () => {
                 }}
               />
             </Col>
-            <Col xs={24} sm={24} md={24} lg={24} xl={13} xxl={13} className="ps-0 ps-lg-4">
+            <Col
+              xs={24}
+              sm={24}
+              md={24}
+              lg={24}
+              xl={13}
+              xxl={13}
+              className="ps-0 ps-lg-4"
+            >
               <h1 className="font-size-3 font-weight-medium  mt-5 mt-lg-0">
                 Who we are
               </h1>
@@ -185,6 +212,356 @@ const HomePage = () => {
                 </li>
               </ul>
             </Col>
+          </Row>
+        </div>
+        <div>
+          <h1 className="containerBox font-size-2 font-weight-semi-bold text-center text-lg-start font-family-2 mb-4">
+            Instant Access to Trusted Veterinarians – Anytime, Anywhere!
+          </h1>
+          <img
+            src={mapImage}
+            alt="map"
+            height={600}
+            width="auto"
+            className="w-100"
+            style={{ right: 0, objectFit: "cover" }}
+          />
+          <div className="d-flex justify-content-center">
+            <p className="font-size-4 text-center px-5 w-75">
+              Need expert advice for your pet? Pawfect Health helps you find
+              nearby veterinarians and connect via live chat for quick
+              consultations. Whether it's a health concern or a routine
+              check-up, get trusted guidance—anytime, anywhere!
+            </p>
+          </div>
+        </div>
+        <div className="d-flex flex-column justify-content-center align-items-center w-100 textBar my-5">
+          <div className="text-loop">
+            <h1 className="iterableText d-flex align-items-center">
+              <span className="secondary-color">Detect.</span>{" "}
+              <span className="primary-color">Understand.</span>{" "}
+              <span className="text-dark">Care.</span>
+              <img
+                alt="pawImg"
+                src={pawImg}
+                height={60}
+                width="auto"
+                className="mx-3"
+              />
+              <span className="secondary-color">
+                Smarter Pet Care, Powered by AI.
+              </span>
+              <img alt="boneImg" src={boneImg} height={60} width="auto" />
+            </h1>
+          </div>
+        </div>
+        <div className="containerBox my-5 text-center text-lg-start">
+          <h1 className=" font-size-2 font-weight-semi-bold  font-family-2 mb-4">
+            Meet Our Trusted Veterinarians
+          </h1>
+
+          <p className="font-size-4 mb-5">
+            At Pawfect Health, we connect you with experienced and compassionate
+            veterinarians dedicated to providing the best care for your furry
+            friend. Whether you need expert advice, a quick consultation, or a
+            full health check-up, our vets are here to help—anytime, anywhere
+          </p>
+          <Row className="d-flex justify-content-center">
+            <Col
+              xs={24}
+              sm={12}
+              md={8}
+              lg={8}
+              xl={6}
+              xxl={4}
+              className="px-4 py-2"
+            >
+              <Card
+                hoverable
+                style={{ width: "100%", borderBottom: "5px solid red" }}
+                cover={
+                  <img
+                    alt="vetImage"
+                    src={vetImg01}
+                    height={260}
+                    width="auto"
+                    style={{ objectFit: "cover" }}
+                  />
+                }
+              >
+                <Meta
+                  title={
+                    <div>
+                      <h5 className="font-size-4 font-weight-semi-bold m-0">
+                        Dr. Emily Carter
+                      </h5>
+                      <h5 className="font-weight-medium font-size-5 text-dark m-0 text-wrap">
+                        {" "}
+                        Canine Internal Medicine Specialize
+                      </h5>
+                    </div>
+                  }
+                  description={
+                    <div>
+                      <h5 className="font-weight-normal font-size-5 m-0">
+                        {" "}
+                        <span className="font-weight-medium  ">
+                          Location :
+                        </span>{" "}
+                        Colombo 05
+                      </h5>
+                      <h5 className="font-weight-normal font-size-5 m-0">
+                        {" "}
+                        <span className="font-weight-medium  ">
+                          Experience :
+                        </span>{" "}
+                        10+ years
+                      </h5>
+                    </div>
+                  }
+                />
+              </Card>
+            </Col>
+            <Col
+              xs={24}
+              sm={12}
+              md={8}
+              lg={8}
+              xl={6}
+              xxl={4}
+              className="px-4 py-2"
+            >
+              <Card
+                hoverable
+                style={{ width: "100%" }}
+                cover={
+                  <img
+                    alt="vetImage"
+                    src={vetImg02}
+                    height={260}
+                    width="auto"
+                    style={{ objectFit: "cover" }}
+                  />
+                }
+              >
+                <Meta
+                  title={
+                    <div>
+                      <h5 className="font-size-4 font-weight-semi-bold m-0">
+                        Dr. Mark Robinson
+                      </h5>
+                      <h5 className="font-weight-medium font-size-5 text-dark m-0 text-wrap">
+                        {" "}
+                        Veterinary Dermatology Specialize
+                      </h5>
+                    </div>
+                  }
+                  description={
+                    <div>
+                      <h5 className="font-weight-normal font-size-5 m-0">
+                        {" "}
+                        <span className="font-weight-medium  ">
+                          Location :
+                        </span>{" "}
+                        Gampaha
+                      </h5>
+                      <h5 className="font-weight-normal font-size-5 m-0">
+                        {" "}
+                        <span className="font-weight-medium  ">
+                          Experience :
+                        </span>{" "}
+                        8+ years
+                      </h5>
+                    </div>
+                  }
+                />
+              </Card>
+            </Col>
+            <Col
+              xs={24}
+              sm={12}
+              md={8}
+              lg={8}
+              xl={6}
+              xxl={4}
+              className="px-4 py-2"
+            >
+              <Card
+                hoverable
+                style={{ width: "100%" }}
+                cover={
+                  <img
+                    alt="vetImage"
+                    src={vetImg03}
+                    height={260}
+                    width="auto"
+                    style={{ objectFit: "cover" }}
+                  />
+                }
+              >
+                <Meta
+                  title={
+                    <div>
+                      <h5 className="font-size-4 font-weight-semi-bold m-0">
+                        Dr. K.R. Chandrasiri
+                      </h5>
+                      <h5 className="font-weight-medium font-size-5 text-dark m-0 text-wrap">
+                        {" "}
+                        Emergency & Critical Care Specialize
+                      </h5>
+                    </div>
+                  }
+                  description={
+                    <div>
+                      <h5 className="font-weight-normal font-size-5 m-0">
+                        {" "}
+                        <span className="font-weight-medium  ">
+                          Location :
+                        </span>{" "}
+                        Makola
+                      </h5>
+                      <h5 className="font-weight-normal font-size-5 m-0">
+                        {" "}
+                        <span className="font-weight-medium  ">
+                          Experience :
+                        </span>{" "}
+                        11+ years
+                      </h5>
+                    </div>
+                  }
+                />
+              </Card>
+            </Col>
+            <Col
+              xs={24}
+              sm={12}
+              md={8}
+              lg={8}
+              xl={6}
+              xxl={4}
+              className="px-4 py-2"
+            >
+              <Card
+                hoverable
+                style={{ width: "100%" }}
+                cover={
+                  <img
+                    alt="vetImage"
+                    src={vetImg04}
+                    height={260}
+                    width="auto"
+                    style={{ objectFit: "cover" }}
+                  />
+                }
+              >
+                <Meta
+                  title={
+                    <div>
+                      <h5 className="font-size-4 font-weight-semi-bold m-0">
+                        Dr. Sarah Williams
+                      </h5>
+                      <h5 className="font-weight-medium font-size-5 text-dark m-0 text-wrap">
+                        {" "}
+                        Veterinary Dermatology Specialize
+                      </h5>
+                    </div>
+                  }
+                  description={
+                    <div>
+                      <h5 className="font-weight-normal font-size-5 m-0">
+                        {" "}
+                        <span className="font-weight-medium  ">
+                          Location :
+                        </span>{" "}
+                        Maharagama
+                      </h5>
+                      <h5 className="font-weight-normal font-size-5 m-0">
+                        {" "}
+                        <span className="font-weight-medium  ">
+                          Experience :
+                        </span>{" "}
+                        6+ years
+                      </h5>
+                    </div>
+                  }
+                />
+              </Card>
+            </Col>
+            <Col
+              xs={24}
+              sm={12}
+              md={8}
+              lg={8}
+              xl={6}
+              xxl={4}
+              className="px-4 py-2"
+            >
+              <Card
+                hoverable
+                style={{ width: "100%" }}
+                cover={
+                  <img
+                    alt="vetImage"
+                    src={vetImg05}
+                    height={260}
+                    width="auto"
+                    style={{ objectFit: "cover" }}
+                  />
+                }
+              >
+                <Meta
+                  title={
+                    <div>
+                      <h5 className="font-size-4 font-weight-semi-bold m-0">
+                        Dr. Rebeka Perera
+                      </h5>
+                      <h5 className="font-weight-medium font-size-5 text-dark m-0 text-wrap">
+                        {" "}
+                        Canine Internal Medicine Specialize
+                      </h5>
+                    </div>
+                  }
+                  description={
+                    <div>
+                      <h5 className="font-weight-normal font-size-5 m-0">
+                        {" "}
+                        <span className="font-weight-medium  ">
+                          Location :
+                        </span>{" "}
+                        Nugegoda
+                      </h5>
+                      <h5 className="font-weight-normal font-size-5 m-0">
+                        {" "}
+                        <span className="font-weight-medium  ">
+                          Experience :
+                        </span>{" "}
+                        13+ years
+                      </h5>
+                    </div>
+                  }
+                />
+              </Card>
+            </Col>
+          </Row>
+        </div>
+        <div className="containerBox my-5 text-center text-lg-start">
+          <Row>
+            <Col xs={24} sm={24} md={24} lg={12} xl={12} xxl={10}>
+              <h1 className=" font-size-2 font-weight-semi-bold  font-family-2 mb-4 ">
+                Start Caring Smarter for Your Pet Today!
+              </h1>
+              <p className="font-size-4 mb-5">
+                Give your furry friend the best care with Pawfect Health.
+                Everything your pet needs from AI-powered illness detection to
+                real-time vet consultations is just a click away. Join thousands
+                of pet owners who trust Pawfect Health for smarter, stress-free
+                pet care.
+              </p>
+              <Button className="py-4 px-4 rounded-3" type="default">
+                Get Start With Pawfect Health
+              </Button>
+            </Col>
+            <Col xs={24} sm={24} md={24} lg={12} xl={12} xxl={14}></Col>
           </Row>
         </div>
       </div>

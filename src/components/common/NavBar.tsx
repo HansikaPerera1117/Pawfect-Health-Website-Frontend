@@ -134,7 +134,7 @@ const NavBar = ({ pageName }: Props) => {
                 type="default"
                 onClick={handleStartListingClick}
               >
-                List Your Property
+                Get Start
               </Button>
             ) : (
               ""
@@ -192,14 +192,18 @@ const NavBar = ({ pageName }: Props) => {
         <ul>
           {Cookies.get("authUser") ? (
             <ul className="list-inline nav_itemList">
-              <li className="list-inline-item" onClick={handleListedProperties}>Listed Properties</li>
-              <li className="list-inline-item" onClick={handleListedProperties}>Listed Properties</li>
+              <li className="list-inline-item" onClick={handleListedProperties}>
+                Listed Properties
+              </li>
+              <li className="list-inline-item" onClick={handleListedProperties}>
+                Listed Properties
+              </li>
               <li>
                 <Button
                   className="start_Listing_button"
                   onClick={handleStartListingClick}
                 >
-                  List Your Property
+                  Get Start
                 </Button>
               </li>
             </ul>
