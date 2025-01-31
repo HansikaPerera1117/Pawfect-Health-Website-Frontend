@@ -2,6 +2,7 @@ import React from "react";
 import MainLayout from "../layout/MainLayout";
 import { Button, Card, Col, Row } from "antd";
 import mainDogImage from "../assets/images/mainImage01.png";
+import mainDogImage02 from "../assets/images/mainImage02.png";
 import pawBgImage from "../assets/images/paw_bg.png";
 import mapImage from "../assets/images/map.png";
 import introImage from "../assets/images/introSecImg.png";
@@ -10,6 +11,7 @@ import vetImg02 from "../assets/images/vets/vet02.png";
 import vetImg03 from "../assets/images/vets/vet03.png";
 import vetImg04 from "../assets/images/vets/vet04.png";
 import vetImg05 from "../assets/images/vets/vet05.png";
+import Logo from "../assets/images/Logo/Logo.png";
 import boneImg from "../assets/images/boneImg.png";
 import pawImg from "../assets/images/pawImg.png";
 import "../styles/homePageStyles.scss";
@@ -227,7 +229,7 @@ const HomePage = () => {
             style={{ right: 0, objectFit: "cover" }}
           />
           <div className="d-flex justify-content-center">
-            <p className="font-size-4 text-center px-5 w-75">
+            <p className="font-size-4 text-center px-5 mx-0 mx-lg-5">
               Need expert advice for your pet? Pawfect Health helps you find
               nearby veterinarians and connect via live chat for quick
               consultations. Whether it's a health concern or a routine
@@ -278,7 +280,8 @@ const HomePage = () => {
             >
               <Card
                 hoverable
-                style={{ width: "100%", borderBottom: "5px solid red" }}
+                bordered={false}
+                style={{ width: "100%", borderBottom: "5px solid #6baed6" }}
                 cover={
                   <img
                     alt="vetImage"
@@ -332,8 +335,9 @@ const HomePage = () => {
               className="px-4 py-2"
             >
               <Card
+                bordered={false}
                 hoverable
-                style={{ width: "100%" }}
+                style={{ width: "100%", borderBottom: "5px solid #f7dc6f" }}
                 cover={
                   <img
                     alt="vetImage"
@@ -387,8 +391,9 @@ const HomePage = () => {
               className="px-4 py-2"
             >
               <Card
+                bordered={false}
                 hoverable
-                style={{ width: "100%" }}
+                style={{ width: "100%", borderBottom: "5px solid #6baed6" }}
                 cover={
                   <img
                     alt="vetImage"
@@ -442,8 +447,9 @@ const HomePage = () => {
               className="px-4 py-2"
             >
               <Card
+                bordered={false}
                 hoverable
-                style={{ width: "100%" }}
+                style={{ width: "100%", borderBottom: "5px solid #f7dc6f" }}
                 cover={
                   <img
                     alt="vetImage"
@@ -497,8 +503,9 @@ const HomePage = () => {
               className="px-4 py-2"
             >
               <Card
+                bordered={false}
                 hoverable
-                style={{ width: "100%" }}
+                style={{ width: "100%", borderBottom: "5px solid #6baed6" }}
                 cover={
                   <img
                     alt="vetImage"
@@ -544,9 +551,9 @@ const HomePage = () => {
             </Col>
           </Row>
         </div>
-        <div className="containerBox my-5 text-center text-lg-start">
+        <div className="containerBox my-5 pt-5 text-center text-lg-start">
           <Row>
-            <Col xs={24} sm={24} md={24} lg={12} xl={12} xxl={10}>
+            <Col xs={24} sm={24} md={24} lg={12} xl={12} xxl={10} className="d-flex flex-column align-items-center align-items-lg-start">
               <h1 className=" font-size-2 font-weight-semi-bold  font-family-2 mb-4 ">
                 Start Caring Smarter for Your Pet Today!
               </h1>
@@ -557,11 +564,33 @@ const HomePage = () => {
                 of pet owners who trust Pawfect Health for smarter, stress-free
                 pet care.
               </p>
-              <Button className="py-4 px-4 rounded-3" type="default">
-                Get Start With Pawfect Health
-              </Button>
+              <div className="d-flex flex-column align-items-center align-items-lg-start justify-content-center">
+                <img src={Logo} alt="logo" height={140} width="auto" />
+                <Button className="py-4 px-4 rounded-3 my-5" type="default">
+                  Get Start With Pawfect Health
+                </Button>
+              </div>
             </Col>
-            <Col xs={24} sm={24} md={24} lg={12} xl={12} xxl={14}></Col>
+            <Col
+              xs={24}
+              sm={24}
+              md={24}
+              lg={12}
+              xl={12}
+              xxl={14}
+              className="d-flex justify-content-center align-items-center"
+            >
+              <img
+                src={mainDogImage02}
+                alt="Main Dog"
+                className="mainDogImage02"
+                style={{
+                  maxWidth: "100%",
+                  height: "auto",
+                  minWidth: "80%",
+                }}
+              />
+            </Col>
           </Row>
         </div>
       </div>

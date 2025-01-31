@@ -1,11 +1,9 @@
-import { Facebook, Linkedin } from "react-feather";
 import "../../styles/common/Footer/footer.scss";
 import "../../styles/common/commonStyles.scss";
-// import fb from "../assets/images/Facebook Icon.png";
-// import twitter from "../assets/images/Twitter Icon.png";
-// import linkdin from "../assets/images/Linkedin Icon.png";
-// import lightLogo from "../assets/images/logo/Logo Blue background 3.png";
+import linkdin from "../../assets/images/icons/linkedin_icon.png";
+import lightLogo from "../../assets/images/Logo/Logo.png";
 import { useNavigate } from "react-router-dom";
+import { Instagram } from "react-feather";
 
 const Footer = () => {
   const history = useNavigate();
@@ -14,10 +12,9 @@ const Footer = () => {
       <footer className="footerMain">
         <div className="footer-inner container-fluid align-items-center">
           <div className="up-section d-flex justify-content-center align-items-center">
-            <h2 className="font-size-1 text-center text-white">
-              Experience Comfort <br /> in Every Stay
+            <h2 className="font-size-2 text-center text-white">
+              Experience Smart Care in Every Wag <br /> Pawfect Health
             </h2>
-          
           </div>
 
           {/* up section */}
@@ -41,41 +38,17 @@ const Footer = () => {
                 >
                   About Us{" "}
                 </li>
-                <li
-                  onClick={() => {
-                    history("/coming-soon");
-                  }}
-                  style={{ cursor: "pointer" }}
-                >
-                  What We Do{" "}
-                </li>
-                <li
-                  onClick={() => {
-                    history("/coming-soon");
-                  }}
-                  style={{ cursor: "pointer" }}
-                >
-                  To The Power of 10
-                </li>
-                <li
-                  onClick={() => {
-                    history("/coming-soon");
-                  }}
-                  style={{ cursor: "pointer" }}
-                >
-                  Donate
-                </li>
               </ul>
             </div>
             <div className="col-lg-6 col-md-12 col-sm-12 footer-item">
               <ul>
                 <li className="text-uppercase first-li">What We Do</li>
-                <li>Encouraging Testing</li>
-                <li>Strengthening Advocacy</li>
-                <li>Sharing Information</li>
-                <li>Building Leadership</li>
-                <li>Engaging With Global Fund</li>
-                <li>Shining a Light</li>
+                <li>Enhancing Pet Healthcare </li>
+                <li>Empowering Pet Owners </li>
+                <li>Connecting You with Experts </li>
+                <li>Innovating with AI</li>
+                <li>Building a Pet-Friendly Future </li>
+                <li>Ensuring Safety & Wellness </li>
               </ul>
             </div>
             <div className="col-lg-6 col-md-12 col-sm-12 footer-item">
@@ -88,37 +61,30 @@ const Footer = () => {
             </div>
             <div className="col-lg-6 col-md-12 col-sm-12 footer-item">
               <ul>
-                <li className="text-uppercase first-li">TALK TO US</li>
-                <li>support@ercom.com</li>
-                <li>+66 2399 1145</li>
-                <li>Contact Us</li>
-                <li>
-                  <a
-                    href="https://www.facebook.com/ServicedApartmentsLK/"
-                    target="_blank"
-                    style={{ textDecoration: "none", color: "white" }}
-                  >
-                    Facebook
-                  </a>
-                </li>
+                <li className="text-uppercase first-li">CONTACT US</li>
+                <li>hansikaperera59@gmail.com</li>
+                <li>+94 75 5646280</li>
+
                 <li>
                   {" "}
                   <a
-                    href="https://www.linkedin.com/company/seyka-holdings/"
+                    href="https://www.linkedin.com/in/hansika-perera-277791244/"
                     target="_blank"
                     style={{ textDecoration: "none", color: "white" }}
                   >
-                    Linkedin
+                    <img
+                      width={35}
+                      src={linkdin}
+                      alt="linkdin"
+                      className="me-3"
+                    />
                   </a>
-                </li>
-                <li>
-                  {" "}
                   <a
-                    href="#"
+                    href="https://www.instagram.com/hansi__iiii__/"
                     target="_blank"
                     style={{ textDecoration: "none", color: "white" }}
                   >
-                    Twitter
+                    <Instagram strokeWidth={1} className="" />
                   </a>
                 </li>
               </ul>
@@ -126,8 +92,7 @@ const Footer = () => {
           </div>
           <div className="footer-down-section mt-4 d-flex justify-content-center align-items-center w-100">
             <p className="mt-2 mb-2 all-right-reserved">
-              {new Date().getFullYear()} © Serviced Apartments.All rights
-              Reserved
+              {new Date().getFullYear()} © Pawfect Health. All rights Reserved
             </p>
           </div>
         </div>
