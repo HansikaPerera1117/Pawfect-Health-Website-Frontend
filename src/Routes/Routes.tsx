@@ -13,6 +13,18 @@ const Routes = [
     path: "/sign-up",
     component: lazy(() => import("../pages/SignUpPage")),
   },
+  {
+    path: "/emotion-prediction",
+    component: lazy(() => import("../pages/DogEmotionPredictPage")),
+  },
+  {
+    path: "/health-prediction",
+    component: lazy(() => import("../pages/CheckDogHealthConditionPage")),
+  },
+  {
+    path: "/health-prediction-result",
+    component: lazy(() => import("../pages/DogHealthPredictPage")),
+  },
 ];
 
 export default Routes;

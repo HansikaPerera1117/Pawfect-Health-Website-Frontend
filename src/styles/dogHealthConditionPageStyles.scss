@@ -1,0 +1,17 @@
+.ant-select-selector {
+  border-radius: 15px !important;
+}
+
+.healthPredictionDogImg {
+  position: absolute;
+  bottom: 40px;
+  right: 80px;
+}
+
+@media (max-width: 991px) {
+  .healthPredictionDogImg {
+    position: relative;
+    bottom: 40px;
+    right: 0;
+  }
+}
