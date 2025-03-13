@@ -1,5 +1,5 @@
-import "../styles/login/loginStyles.scss";
 import "../styles/common/commonStyles.scss";
+import "../styles/dogEmotionPredictionPageStyles.scss";
 import { useNavigate } from "react-router-dom";
 import { customToastMsg, handleError } from "../util/commonFunctions";
 import { useState } from "react";
@@ -82,14 +82,14 @@ const DogEmotionPredictPage = () => {
                 </Dragger>
               </Form.Item>
               <Card
-                className="text-center my-5 rounded-5"
+                className="text-center my-5 rounded-5 emotionPredictionCard"
                 style={{
                   width: "60%",
                   background:
                     "linear-gradient(180deg, rgba(107, 174, 214, 0.35) 67%, rgba(247, 220, 111, 0.23) 100%)",
                 }}
               >
-                <h5 className="font-size-2 font-weight-normal">
+                <h5 className="font-size-2 font-weight-normal cardHeading">
                   Your dog is in <strong>{"Prediction"}</strong> mood
                 </h5>
                 <p>
@@ -103,24 +103,26 @@ const DogEmotionPredictPage = () => {
               </Card>
               <img
                 src={dogImg01}
-                className="fileUploadBgImage"
+                className="emotionPredictionDogImages"
                 style={{
-                  position: "fixed",
-                  bottom: 40,
-                  left: 80,
-                  width: "380px",
+                  position: "absolute",
+                  bottom: 0,
+                  left: "5%", // Adjust position for responsiveness
+                  width: "20vw", // Use viewport width for responsiveness
+                  maxWidth: "400px", // Set a max width to prevent too large images
                   height: "auto",
                   objectFit: "cover",
                 }}
               />
               <img
                 src={dogImg02}
-                className="fileUploadBgImage"
+                className="emotionPredictionDogImages"
                 style={{
-                  position: "fixed",
-                  bottom: 40,
-                  right: 80,
-                  width: "380px",
+                  position: "absolute",
+                  bottom: 0,
+                  right: "5%", // Adjust position for responsiveness
+                  width: "20vw",
+                  maxWidth: "400px",
                   height: "auto",
                   objectFit: "cover",
                 }}

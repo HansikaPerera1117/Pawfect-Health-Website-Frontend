@@ -1,0 +1,25 @@
+@media (max-width: 992px) {
+  .emotionPredictionDogImages {
+    width: 25vw !important; // Adjusts for tablets
+    max-width: 300px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .emotionPredictionDogImages {
+    width: 30vw !important;
+    max-width: 200px !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .emotionPredictionCard {
+    width: 80% !important;
+    .cardHeading {
+      font-size: 40px !important;
+    }
+  }
+  .emotionPredictionDogImages {
+    display: none; // Hide images on very small screens to avoid overlap
+  }
+}
