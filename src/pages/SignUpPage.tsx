@@ -11,6 +11,7 @@ import blueLogo from "../assets/images/logo/Logo.png";
 import svgTwo from "../assets/images/line-md--watch-off (1).svg";
 import { Button, GetProps, Input, Typography } from "antd";
 import { ArrowLeft } from "react-feather";
+import UserLocationMap from "../components/UserLocationMap";
 
 type OTPProps = GetProps<typeof Input.OTP>;
 
@@ -117,6 +118,24 @@ const SignUpPage = () => {
     }
   };
 
+  const [selectedLocation, setSelectedLocation] = useState<{
+    lat: number;
+    lng: number;
+  } | null>(null);
+  const [isLocationSelected, setIsLocationSelected] = useState(false);
+
+  const handleMarkerPositionChange = (
+    place: google.maps.places.PlaceResult
+  ) => {
+    const { lat, lng } = place.geometry?.location?.toJSON() || {};
+    setSelectedLocation({ lat, lng });
+    console.log("Selected Location:", { lat, lng });
+  };
+
+  const handleIsLocationSelected = (status: boolean) => {
+    setIsLocationSelected(status);
+  };
+
   return (
     <>
       <main className="main_login w-100 d-flex justify-content-center align-items-center">
@@ -146,7 +165,7 @@ const SignUpPage = () => {
                 </h3>
               ) : (
                 <h3 className="text-start mb-0 mt-3">
-                  Welcome to Serviced Apartments LK!
+                  Welcome to Pawfect Health !
                 </h3>
               )}
               <p className="text-start text-muted mb-4">
@@ -191,6 +210,20 @@ const SignUpPage = () => {
                       id="lastName"
                       onChange={(e) => setLastName(e.target.value)}
                       placeholder="Enter your last name"
+                    />
+                  </div>
+
+                  <div className="mb-4">
+                    <label
+                      htmlFor="email"
+                      className="form-label font-weight-medium font-size-4 text-gray-secondary"
+                    >
+                      Location
+                    </label>
+                    <UserLocationMap
+                      onMarkerPositionChange={handleMarkerPositionChange}
+                      isSelectLocation={handleIsLocationSelected}
+                      selectedLocation={selectedLocation || undefined} // Pass selectedLocation if available
                     />
                   </div>
                   <div className="mb-4">

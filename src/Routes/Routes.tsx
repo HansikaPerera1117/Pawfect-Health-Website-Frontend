@@ -25,6 +25,10 @@ const Routes = [
     path: "/health-prediction-result",
     component: lazy(() => import("../pages/DogHealthPredictPage")),
   },
+  {
+    path: "/nearest-doctor",
+    component: lazy(() => import("../pages/FindNearestDoctorPage")),
+  },
 ];
 
 export default Routes;
