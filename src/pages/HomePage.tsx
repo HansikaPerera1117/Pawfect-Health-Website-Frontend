@@ -16,9 +16,12 @@ import boneImg from "../assets/images/boneImg.png";
 import pawImg from "../assets/images/pawImg.png";
 import "../styles/homePageStyles.scss";
 import "../styles/common/commonStyles.scss";
+import { useNavigate } from "react-router-dom";
 
 const HomePage = () => {
   const { Meta } = Card;
+
+  const history = useNavigate();
 
   return (
     <MainLayout>
@@ -279,6 +282,9 @@ const HomePage = () => {
               className="px-4 py-2"
             >
               <Card
+                onClick={() => {
+                  history("doctor-profile/1");
+                }}
                 hoverable
                 bordered={false}
                 style={{ width: "100%", borderBottom: "5px solid #6baed6" }}
@@ -553,7 +559,15 @@ const HomePage = () => {
         </div>
         <div className="containerBox my-5 pt-5 text-center text-lg-start">
           <Row>
-            <Col xs={24} sm={24} md={24} lg={12} xl={12} xxl={10} className="d-flex flex-column align-items-center align-items-lg-start">
+            <Col
+              xs={24}
+              sm={24}
+              md={24}
+              lg={12}
+              xl={12}
+              xxl={10}
+              className="d-flex flex-column align-items-center align-items-lg-start"
+            >
               <h1 className=" font-size-2 font-weight-semi-bold  font-family-2 mb-4 ">
                 Start Caring Smarter for Your Pet Today!
               </h1>

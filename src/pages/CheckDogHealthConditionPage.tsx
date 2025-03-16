@@ -319,7 +319,9 @@ const CheckDogHealthConditionPage = () => {
                   className="px-4 py-4  font-size-4 w-100 rounded-4"
                   size="large"
                   type="default"
-                  // onClick={handleStartListingClick}
+                  onClick={()=>{
+                    history("/health-prediction-result")
+                  }}
                 >
                   Check Dog Health
                 </Button>
