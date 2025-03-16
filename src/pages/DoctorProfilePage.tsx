@@ -1,13 +1,27 @@
 import "../styles/common/commonStyles.scss";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { customToastMsg, handleError } from "../util/commonFunctions";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import NavBar from "../components/common/NavBar";
 import { Avatar, Button, Col, Row } from "antd";
 import doctorImg from "../assets/images/vets/vet01.png";
 
 const DoctorProfilePage = () => {
   const history = useNavigate();
+
+  const location = useLocation();
+
+  const [doctorId, setDoctorId] = useState<number>();
+
+  useEffect(() => {
+    const { state } = location;
+    if (state && state.doctorId) {
+      const { doctorId } = state;
+      console.log(doctorId, "1010101010101011");
+      setDoctorId(doctorId);
+      // getOrderDetails(perpetratorId);
+    }
+  }, [location]);
 
   return (
     <>
@@ -122,7 +136,11 @@ const DoctorProfilePage = () => {
                   className="px-4 py-4  font-size-4 w-100 rounded-4"
                   size="large"
                   type="default"
-                  // onClick={handleStartListingClick}
+                  onClick={() => {
+                    history(`/chat/${doctorId}`, {
+                      state: { doctorId: doctorId },
+                    });
+                  }}
                 >
                   Start Chat with {"Dr name"}
                 </Button>
@@ -141,7 +159,9 @@ const DoctorProfilePage = () => {
                   size="large"
                   type="default"
                   onClick={() => {
-                    history("/make-appointment/1");
+                    history(`/make-appointment/${doctorId}`, {
+                      state: { doctorId: doctorId },
+                    });
                   }}
                 >
                   Make Appointment to {"Dr name "}

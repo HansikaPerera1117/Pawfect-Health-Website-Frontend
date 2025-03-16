@@ -4,9 +4,11 @@ import {
   InfoWindow,
   useJsApiLoader,
 } from "@react-google-maps/api";
+import { Button } from "antd";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+import "../styles/common/map/googleMap.scss";
 
 const containerStyle = {
   width: "100%",
@@ -58,7 +60,9 @@ const DoctorMap: React.FC<GoogleMapViewProps> = ({ doctors, userLocation }) => {
         <Marker
           key={doctor.id}
           position={{ lat: doctor.latitude, lng: doctor.longitude }}
-          onClick={() => setSelectedDoctor(doctor)}
+          onClick={() => {
+            setSelectedDoctor(doctor);
+          }}
         />
       ))}
 
@@ -71,14 +75,21 @@ const DoctorMap: React.FC<GoogleMapViewProps> = ({ doctors, userLocation }) => {
           }}
           onCloseClick={() => setSelectedDoctor(null)}
         >
-          <div>
-            <h3>{selectedDoctor.name}</h3>
-            <p>{selectedDoctor.specialty}</p>
-            <button
-              onClick={() => navigate(`/doctor-profile/${selectedDoctor?.id}`)}
+          <div className="mt-3">
+            <h3 className="font-size-4 m-0 pe-5">{selectedDoctor.name}</h3>
+            <p className="font-size-5 mb-2-0">{selectedDoctor.specialty}</p>
+            <Button
+              className="py-3 font-size-5 w-100 rounded-3"
+              size="middle"
+              type="default"
+              onClick={() =>
+                navigate(`/doctor-profile/${selectedDoctor?.id}`, {
+                  state: { doctorId: selectedDoctor?.id },
+                })
+              }
             >
               View Details
-            </button>
+            </Button>
           </div>
         </InfoWindow>
       )}

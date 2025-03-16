@@ -1,7 +1,7 @@
 import "../styles/common/commonStyles.scss";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { customToastMsg, handleError } from "../util/commonFunctions";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import NavBar from "../components/common/NavBar";
 import {
   Button,
@@ -21,15 +21,30 @@ import moment from "moment";
 
 const MakeDoctorAppointmentPage = () => {
   const history = useNavigate();
+  const location = useLocation();
 
   const [name, setName] = useState<string>("");
   const [contactNo, setContactNo] = useState<string>("");
   const [appointmentDate, setAppointmentDate] = useState<string>("");
   const [appointmentTime, setAppointmentTime] = useState<string>("");
 
+  const [doctorId, setDoctorId] = useState<number>();
+
+
   const [form] = Form.useForm();
 
   const format = "HH:mm";
+
+
+  useEffect(() => {
+    const { state } = location;
+    if (state && state.doctorId) {
+      const { doctorId } = state;
+      console.log(doctorId, "appoinment");
+      setDoctorId(doctorId);
+      // getOrderDetails(perpetratorId);
+    }
+  }, [location]);
 
   const onChangeAppointmentDate: DatePickerProps["onChange"] = (
     date,

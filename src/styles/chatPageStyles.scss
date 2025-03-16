@@ -1,0 +1,9 @@
+.chatListCard {
+  background-color: transparent;
+  transition: all 0.3s ease, transform 0.3s ease;
+
+  &:hover {
+    background-color: #f8f8f8;
+    transform: scale(1.02);
+  }
+}

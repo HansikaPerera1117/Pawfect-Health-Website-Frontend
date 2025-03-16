@@ -80,10 +80,10 @@ const CheckDogHealthConditionPage = () => {
   useEffect(() => {
     const dogBreedList = Object.entries(DogBreedsBySize).map(
       ([size, breeds]) => ({
-        label: size + " Breeds", // Ensure the label is a string, not JSX
+        label: size + " Breeds",
         title: size,
         options: breeds.map((breed) => ({
-          label: breed, // Ensure label is a string
+          label: breed,
           value: breed,
         })),
       })
@@ -260,7 +260,7 @@ const CheckDogHealthConditionPage = () => {
 
       console.log(payload);
 
-      // history("/health-prediction-result");
+      history("/health-prediction-result");
     }
   };
 
