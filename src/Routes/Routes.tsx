@@ -29,6 +29,10 @@ const Routes = [
     path: "/nearest-doctor",
     component: lazy(() => import("../pages/FindNearestDoctorPage")),
   },
+  {
+    path: "/doctor-profile/:doctorId",
+    component: lazy(() => import("../pages/DoctorProfilePage")),
+  },
 ];
 
 export default Routes;

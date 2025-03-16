@@ -7,6 +7,7 @@ import {
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+
 const containerStyle = {
   width: "100%",
   height: "65vh",
@@ -74,7 +75,7 @@ const DoctorMap: React.FC<GoogleMapViewProps> = ({ doctors, userLocation }) => {
             <h3>{selectedDoctor.name}</h3>
             <p>{selectedDoctor.specialty}</p>
             <button
-              onClick={() => navigate(`/doctor-details/${selectedDoctor.id}`)}
+              onClick={() => navigate(`/doctor-profile/${selectedDoctor?.id}`)}
             >
               View Details
             </button>
