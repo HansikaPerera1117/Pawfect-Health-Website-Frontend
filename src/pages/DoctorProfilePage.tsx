@@ -70,7 +70,7 @@ const DoctorProfilePage = () => {
                 <h1 className="font-size-3 font-weight-semi-bold text-center text-md-start font-family-2 m-0">
                   Specialize
                 </h1>
-                <p className="font-size-4 subText font-weight-light align-self-end  text-center text-md-start mt-5">
+                <p className="font-size-4 subText font-weight-light align-self-end  text-center text-md-start mt-4">
                   Upload your dog's bark and uncover their mood
                   instantly—because every bark tells a story! This keeps it
                   engaging and aligns with the AI-powered emotion detection
@@ -80,35 +80,35 @@ const DoctorProfilePage = () => {
                   <Col xs={24} sm={24} md={24} lg={10} xl={10} xxl={10}>
                     <h5 className=" font-size-4 font-weight-normal my-3">
                       Full Name :{" "}
-                      {"productDetails?.cate gory?.categoryHierarchy"}{" "}
+                      {"productDetails?.cate gory?"}{" "}
                     </h5>
                     <h5 className=" font-size-4 font-weight-normal my-3">
                       Full Name :{" "}
-                      {"productDetails?.cate gory?.categoryHierarchy"}{" "}
+                      {"productDetails?.cate gory?"}{" "}
                     </h5>
                     <h5 className=" font-size-4 font-weight-normal my-3">
                       Full Name :{" "}
-                      {"productDetails?.cat egory?.categoryHierarchy"}{" "}
+                      {"productDetails?.cat egory?"}{" "}
                     </h5>
                   </Col>
                   <Col xs={24} sm={24} md={24} lg={10} xl={10} xxl={10}>
                     <h5 className=" font-size-4 font-weight-normal my-3">
                       Full Name :{" "}
-                      {"productDetails?.cate gory?.categoryHierarchy"}{" "}
+                      {"productDetails?.cate gory?"}{" "}
                     </h5>
                     <h5 className=" font-size-4 font-weight-normal my-3">
                       Full Name :{" "}
-                      {"productDetails?.cat egory?.categoryHierarchy"}{" "}
+                      {"productDetails?.cat egory?"}{" "}
                     </h5>
                     <h5 className=" font-size-4 font-weight-normal my-3">
                       Full Name :{" "}
-                      {"productDetails?.ca tegory?.categoryHierarchy"}{" "}
+                      {"productDetails?.ca tegory?"}{" "}
                     </h5>
                   </Col>
                 </Row>
               </Col>
               <Col xs={24} sm={24} md={24} lg={24} xl={24} xxl={24}>
-                <p className="font-size-4 subText font-weight-light align-self-end  text-center text-lg-start mt-5">
+                <p className="font-size-4 subText font-weight-light align-self-end  text-center text-lg-start mt-4">
                   Upload your dog's bark and uncover their mood
                   instantly—because every bark tells a story! This keeps it
                   engaging and aligns with the AI-powered emotion detection
@@ -130,7 +130,7 @@ const DoctorProfilePage = () => {
                 lg={12}
                 xl={10}
                 xxl={8}
-                className="px-0 px-md-2 px-lg-5 mt-5"
+                className="px-0 px-md-2 px-lg-5 mt-4"
               >
                 <Button
                   className="px-4 py-4  font-size-4 w-100 rounded-4"
@@ -152,7 +152,7 @@ const DoctorProfilePage = () => {
                 lg={12}
                 xl={10}
                 xxl={8}
-                className="px-0 px-md-2 px-lg-5 mt-5"
+                className="px-0 px-md-2 px-lg-5 mt-4"
               >
                 <Button
                   className="px-4 py-4  font-size-4 w-100 rounded-4"

@@ -31,7 +31,7 @@ const HomePage = () => {
           style={{
             backgroundColor: "white",
             height: "100%",
-            padding: "2rem 1rem",
+            padding: "1rem 1rem",
           }}
           justify="center"
           align="middle"
@@ -167,14 +167,6 @@ const HomePage = () => {
                 process, giving you more time to focus on what truly
                 matters—your bond with your pet.
               </p>
-              <p className="font-size-4">
-                Pawfect Health isn’t just about technology—it’s about trust. Our
-                team includes pet lovers, veterinary professionals, and AI
-                experts who are dedicated to making the world a better place for
-                pets. By combining our expertise with your love and care, we’re
-                creating a new standard for pet healthcare. Join us on this
-                journey to redefine how we care for our furry companions.
-              </p>
             </Col>
           </Row>
           <Row className="containerBox text-center text-lg-start mx-3 mx-lg-0 flex-row-reverse">
@@ -185,9 +177,17 @@ const HomePage = () => {
               lg={24}
               xl={24}
               xxl={24}
-              className="my-5"
+              className="mt-3 mb-5"
             >
-              <h1 className="font-size-3 font-weight-medium text-center text-lg-start ">
+              <p className="font-size-4">
+                Pawfect Health isn’t just about technology—it’s about trust. Our
+                team includes pet lovers, veterinary professionals, and AI
+                experts who are dedicated to making the world a better place for
+                pets. By combining our expertise with your love and care, we’re
+                creating a new standard for pet healthcare. Join us on this
+                journey to redefine how we care for our furry companions.
+              </p>
+              <h1 className="font-size-3 font-weight-medium text-center text-lg-start mt-5">
                 What Pawfect Health Offers
               </h1>
 
@@ -493,62 +493,6 @@ const HomePage = () => {
                           Experience :
                         </span>{" "}
                         6+ years
-                      </h5>
-                    </div>
-                  }
-                />
-              </Card>
-            </Col>
-            <Col
-              xs={24}
-              sm={12}
-              md={8}
-              lg={8}
-              xl={6}
-              xxl={4}
-              className="px-4 py-2"
-            >
-              <Card
-                bordered={false}
-                hoverable
-                style={{ width: "100%", borderBottom: "5px solid #6baed6" }}
-                cover={
-                  <img
-                    alt="vetImage"
-                    src={vetImg05}
-                    height={260}
-                    width="auto"
-                    style={{ objectFit: "cover" }}
-                  />
-                }
-              >
-                <Meta
-                  title={
-                    <div>
-                      <h5 className="font-size-4 font-weight-semi-bold m-0">
-                        Dr. Rebeka Perera
-                      </h5>
-                      <h5 className="font-weight-medium font-size-5 text-dark m-0 text-wrap">
-                        {" "}
-                        Canine Internal Medicine Specialize
-                      </h5>
-                    </div>
-                  }
-                  description={
-                    <div>
-                      <h5 className="font-weight-normal font-size-5 m-0">
-                        {" "}
-                        <span className="font-weight-medium  ">
-                          Location :
-                        </span>{" "}
-                        Nugegoda
-                      </h5>
-                      <h5 className="font-weight-normal font-size-5 m-0">
-                        {" "}
-                        <span className="font-weight-medium  ">
-                          Experience :
-                        </span>{" "}
-                        13+ years
                       </h5>
                     </div>
                   }

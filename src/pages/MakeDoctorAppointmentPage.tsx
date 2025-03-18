@@ -109,29 +109,29 @@ const MakeDoctorAppointmentPage = () => {
                   <Col xs={24} sm={24} md={24} lg={10} xl={10} xxl={10}>
                     <h5 className=" font-size-4 font-weight-normal my-3">
                       Full Name :{" "}
-                      {"productDetails?.categ ory?.categoryHierarchy"}{" "}
+                      {"productDetails?.categ ory"}{" "}
                     </h5>
                     <h5 className=" font-size-4 font-weight-normal my-3">
                       Full Name :{" "}
-                      {"productDetails?.ca tegory?.categoryHierarchy"}{" "}
+                      {"productDetails?.ca tegory"}{" "}
                     </h5>
                     <h5 className=" font-size-4 font-weight-normal my-3">
                       Full Name :{" "}
-                      {"productDetails?.cat egory?.categoryHierarchy"}{" "}
+                      {"productDetails?.cat egory"}{" "}
                     </h5>
                   </Col>
                   <Col xs={24} sm={24} md={24} lg={10} xl={10} xxl={10}>
                     <h5 className=" font-size-4 font-weight-normal my-3">
                       Full Name :{" "}
-                      {"productDetails?.cate gory?.categoryHierarchy"}{" "}
+                      {"productDetails?.cate gory"}{" "}
                     </h5>
                     <h5 className=" font-size-4 font-weight-normal my-3">
                       Full Name :{" "}
-                      {"productDetails?.cat egory?.categoryHierarchy"}{" "}
+                      {"productDetails?.cat egory"}{" "}
                     </h5>
                     <h5 className=" font-size-4 font-weight-normal my-3">
                       Full Name :{" "}
-                      {"productDetails?.c ategory?.categoryHierarchy"}{" "}
+                      {"productDetails?.c ategory"}{" "}
                     </h5>
                   </Col>
                 </Row>

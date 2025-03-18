@@ -71,7 +71,7 @@ const DogHealthPredictPage = () => {
                 </p>
               </Card>
             </Row>
-            <Row className="my-5 pb-5 d-flex justify-content-center justify-content-lg-end">
+            <Row className="mb-5 mt-3 pb-5 d-flex justify-content-center justify-content-lg-end">
               <Col xs={20} sm={16} md={8}>
                 <Button
                   className="px-4 py-4  font-size-4 w-100 rounded-4"

@@ -63,7 +63,7 @@ const DogEmotionPredictPage = () => {
             <Form
               form={form}
               layout="vertical"
-              className="mt-5 d-flex flex-column align-items-center w-100"
+              className="mt-4 d-flex flex-column align-items-center w-100"
             >
               <Form.Item name="DNASequence" className="w-75 mt-5 bg-white">
                 <Dragger {...props}>

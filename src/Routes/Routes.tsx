@@ -41,6 +41,10 @@ const Routes = [
     path: "/chat/:doctorId",
     component: lazy(() => import("../pages/UserChatPage")),
   },
+  {
+    path: "/my-profile",
+    component: lazy(() => import("../pages/MyProfilePage")),
+  },
 ];
 
 export default Routes;

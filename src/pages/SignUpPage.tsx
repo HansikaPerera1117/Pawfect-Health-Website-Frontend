@@ -165,7 +165,8 @@ const SignUpPage = () => {
                 </h3>
               ) : (
                 <h3 className="text-start mb-0 mt-3">
-                  Welcome to Pawfect Health !
+                  Welcome to <br />
+                  Pawfect Health !
                 </h3>
               )}
               <p className="text-start text-muted mb-4">

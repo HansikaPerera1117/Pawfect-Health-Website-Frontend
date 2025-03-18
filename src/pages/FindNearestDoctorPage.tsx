@@ -85,7 +85,7 @@ const FindNearestDoctorPage = () => {
               Locate trusted veterinary clinics near you with ease. Quick,
               reliable, and just a tap away!"
             </p>
-            <Row className="d-flex justify-content-center"></Row>
+            {/* <Row className="d-flex justify-content-center"></Row> */}
             <DoctorMap doctors={doctors} userLocation={userLocation} />
           </div>
         </div>
