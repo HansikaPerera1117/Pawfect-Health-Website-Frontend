@@ -5,6 +5,7 @@ import { useState } from "react";
 import { Col, Row } from "antd";
 import NavBar from "../components/common/NavBar";
 import { AppointmentCard } from "../components/common/cards/AppointmentCard";
+import dogImg from "../assets/images/appointmentPageImg.png";
 
 const ViewDoctorAppointmentsPage = () => {
   const history = useNavigate();
@@ -54,6 +55,17 @@ const ViewDoctorAppointmentsPage = () => {
             </Row>
           </div>
         </div>
+        <Row className="d-flex justify-content-start">
+          <img
+            src={dogImg}
+            style={{
+              width: "800px",
+              maxWidth:"100vw",
+              height: "auto",
+              objectFit: "cover",
+            }}
+          />
+        </Row>
       </div>
     </>
   );
