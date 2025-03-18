@@ -45,6 +45,10 @@ const Routes = [
     path: "/my-profile",
     component: lazy(() => import("../pages/MyProfilePage")),
   },
+  {
+    path: "/appointments",
+    component: lazy(() => import("../pages/ViewDoctorAppointmentsPage")),
+  },
 ];
 
 export default Routes;
