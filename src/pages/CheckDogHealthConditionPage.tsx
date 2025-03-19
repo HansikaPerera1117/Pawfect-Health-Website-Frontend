@@ -289,1124 +289,1162 @@ const CheckDogHealthConditionPage = () => {
               layout="vertical"
               className="mt-5 d-flex flex-column align-items-center w-100"
             >
-              <h5 className="align-self-start mb-4">General Dog Information</h5>
-              <Row className="w-100 ps-5">
-                <Col xs={24} sm={24} md={12} className="pe-0 pe-md-3">
-                  <Form.Item
-                    name="dogName"
-                    label={<span className="font-size-4">Dog's Name</span>}
+              <Row>
+                <Col xs={24} sm={24} md={12} className="pe-3">
+                  <h5 className="align-self-start mb-4">
+                    General Dog Information
+                  </h5>
+                  <Row
+                    className="w-100 p-4 rounded-4"
+                    style={{ backgroundColor: "#6bafd648" }}
                   >
-                    <Input
-                      size="large"
-                      id="dogName"
-                      name="dogName"
-                      value={dogName}
-                      placeholder="Enter your dog's name"
-                      className="rounded-4 p-3"
-                      type="text"
-                      onChange={(e) => setDogName(e.target.value)}
-                    />
-                  </Form.Item>
-                </Col>
-                <Col xs={24} sm={24} md={12} className="ps-0 ps-md-3">
-                  <Form.Item
-                    name="selectedDogBreed"
-                    label={<span className="font-size-4">Dog Breed</span>}
-                  >
-                    <Select
-                      showSearch
-                      placeholder="Select your dog breed"
-                      optionFilterProp="label"
-                      style={{ height: 55 }}
-                      value={selectedDogBreed}
-                      onChange={(e) => {
-                        console.log(e);
-                        setSelectedDogBreed(e ? e : "");
-                      }}
-                      options={dogBreedList}
-                    />
-                  </Form.Item>
-                </Col>
-                <Col xs={24} sm={24} md={12} className="pe-0 pe-md-3">
-                  <Form.Item
-                    name="age"
-                    label={
-                      <span className="font-size-4">Dog's Age (in years)</span>
-                    }
-                  >
-                    <Input
-                      size="large"
-                      id="age"
-                      name="age"
-                      max={30}
-                      value={age}
-                      placeholder="Enter your dog's age"
-                      className="rounded-4 p-3"
-                      type="number"
-                      onChange={(e) => setAge(e.target.value)}
-                    />
-                  </Form.Item>
-                </Col>
-                <Col xs={24} sm={24} md={12} className="ps-0 ps-md-3">
-                  <Form.Item
-                    name="weight"
-                    label={
-                      <span className="font-size-4">Dog's Weight (in kg)</span>
-                    }
-                  >
-                    <Input
-                      size="large"
-                      id="weight"
-                      name="weight"
-                      value={weight}
-                      placeholder="Enter your dog's weight"
-                      className="rounded-4 p-3"
-                      type="number"
-                      onChange={(e) => setWeight(e.target.value)}
-                    />
-                  </Form.Item>
-                </Col>
-                <Col
-                  xs={24}
-                  sm={24}
-                  md={12}
-                  lg={12}
-                  xl={8}
-                  className="pe-0 pe-md-3"
-                >
-                  <Form.Item
-                    className="align-self-start w-100"
-                    name="gender"
-                    label={<span className="font-size-4">Gender</span>}
-                  >
-                    <Radio.Group
-                      name="gender"
-                      value={gender}
-                      onChange={(e) => {
-                        setGender(e.target?.value);
-                      }}
-                    >
-                      <Radio value="Male" className="font-size-4 me-5">
-                        <span className="font-size-4 font-weight-normal">
-                          Male
-                        </span>
-                      </Radio>
-
-                      <Radio value="Female" className="font-size-4">
-                        <span className="font-size-4 font-weight-normal">
-                          Female
-                        </span>
-                      </Radio>
-                    </Radio.Group>
-                  </Form.Item>
-                </Col>
-                <Col
-                  xs={24}
-                  sm={24}
-                  md={12}
-                  lg={12}
-                  xl={8}
-                  className="pe-0 pe-md-3"
-                >
-                  <Form.Item
-                    className="align-self-start w-100"
-                    name="spayedOrNeutered"
-                    label={
-                      <span className="font-size-4">Spayed / Neutered</span>
-                    }
-                  >
-                    <Radio.Group
-                      name="spayedOrNeutered"
-                      value={spayedOrNeutered}
-                      onChange={(e) => {
-                        setSpayedOrNeutered(e.target?.value);
-                      }}
-                    >
-                      <Radio value="Yes" className="font-size-4 me-5">
-                        <span className="font-size-4 font-weight-normal">
-                          Yes
-                        </span>
-                      </Radio>
-
-                      <Radio value="No" className="font-size-4">
-                        <span className="font-size-4 font-weight-normal">
-                          No
-                        </span>
-                      </Radio>
-                    </Radio.Group>
-                  </Form.Item>
-                </Col>
-                <Col
-                  xs={24}
-                  sm={24}
-                  md={12}
-                  lg={12}
-                  xl={8}
-                  className="pe-0 pe-md-3"
-                >
-                  <Form.Item
-                    className="align-self-start w-100"
-                    name="vaccinationStatus"
-                    label={
-                      <span className="font-size-4">Vaccination Status</span>
-                    }
-                  >
-                    <Radio.Group
-                      name="vaccinationStatus"
-                      value={vaccinationStatus}
-                      onChange={(e) => {
-                        setVaccinationStatus(e.target?.value);
-                      }}
-                    >
-                      <Radio value="Up to date" className="font-size-4 me-5">
-                        <span className="font-size-4 font-weight-normal">
-                          Up to date
-                        </span>
-                      </Radio>
-
-                      <Radio value="Not up to date" className="font-size-4">
-                        <span className="font-size-4 font-weight-normal">
-                          Not up to date
-                        </span>
-                      </Radio>
-                    </Radio.Group>
-                  </Form.Item>
-                </Col>
-              </Row>
-
-              <h5 className="align-self-start mt-5 mb-4">General Symptoms</h5>
-              <Row className="w-100 ps-5">
-                <Col
-                  xs={24}
-                  sm={24}
-                  md={12}
-                  lg={12}
-                  xl={8}
-                  className="pe-0 pe-md-3"
-                >
-                  <Form.Item
-                    className="align-self-start w-100 "
-                    name="feverStatus"
-                    label={
-                      <span className="font-size-4">
-                        1. Does your dog have fever?
-                      </span>
-                    }
-                  >
-                    <Radio.Group
-                      name="feverStatus"
-                      value={feverStatus}
-                      onChange={(e) => {
-                        setFeverStatus(e.target?.value);
-                      }}
-                    >
-                      <Radio value="Yes" className="font-size-4 me-5">
-                        <span className="font-size-4 font-weight-normal">
-                          Yes
-                        </span>
-                      </Radio>
-
-                      <Radio value="No" className="font-size-4 me-5">
-                        <span className="font-size-4 font-weight-normal">
-                          No
-                        </span>
-                      </Radio>
-                      <Radio value="NotShure" className="font-size-4">
-                        <span className="font-size-4 font-weight-normal">
-                          Not Shure
-                        </span>
-                      </Radio>
-                    </Radio.Group>
-                  </Form.Item>
-                </Col>
-                <Col
-                  xs={24}
-                  sm={24}
-                  md={12}
-                  lg={12}
-                  xl={8}
-                  className="pe-0 pe-md-3"
-                >
-                  <Form.Item
-                    className="align-self-start w-100 "
-                    name="eatingStatus"
-                    label={
-                      <span className="font-size-4">
-                        2. Is your dog eating normally?
-                      </span>
-                    }
-                  >
-                    <Radio.Group
-                      name="eatingStatus"
-                      value={eatingStatus}
-                      onChange={(e) => {
-                        setEatingStatus(e.target?.value);
-                      }}
-                    >
-                      <Radio value="Yes" className="font-size-4 me-5">
-                        <span className="font-size-4 font-weight-normal">
-                          Yes
-                        </span>
-                      </Radio>
-
-                      <Radio value="No" className="font-size-4">
-                        <span className="font-size-4 font-weight-normal">
-                          No
-                        </span>
-                      </Radio>
-                    </Radio.Group>
-                  </Form.Item>
-                </Col>
-                <Col
-                  xs={24}
-                  sm={24}
-                  md={12}
-                  lg={12}
-                  xl={8}
-                  className="pe-0 pe-md-3"
-                >
-                  <Form.Item
-                    className="align-self-start w-100 "
-                    name="weaknessStatus"
-                    label={
-                      <span className="font-size-4">
-                        3. Does your dog show signs of lethargy or weakness?
-                      </span>
-                    }
-                  >
-                    <Radio.Group
-                      name="weaknessStatus"
-                      value={weaknessStatus}
-                      onChange={(e) => {
-                        setWeaknessStatus(e.target?.value);
-                      }}
-                    >
-                      <Radio value="Yes" className="font-size-4 me-5">
-                        <span className="font-size-4 font-weight-normal">
-                          Yes
-                        </span>
-                      </Radio>
-
-                      <Radio value="No" className="font-size-4">
-                        <span className="font-size-4 font-weight-normal">
-                          No
-                        </span>
-                      </Radio>
-                    </Radio.Group>
-                  </Form.Item>
-                </Col>
-                <Col
-                  xs={24}
-                  sm={24}
-                  md={12}
-                  lg={12}
-                  xl={8}
-                  className="pe-0 pe-md-3"
-                >
-                  <Form.Item
-                    className="align-self-start w-100 "
-                    name="vomitingStatus"
-                    label={
-                      <span className="font-size-4">
-                        4. Is your dog vomiting?
-                      </span>
-                    }
-                  >
-                    <Radio.Group
-                      name="vomitingStatus"
-                      value={vomitingStatus}
-                      onChange={(e) => {
-                        setVomitingStatus(e.target?.value);
-                      }}
-                    >
-                      <Radio value="Yes" className="font-size-4 me-5">
-                        <span className="font-size-4 font-weight-normal">
-                          Yes
-                        </span>
-                      </Radio>
-
-                      <Radio value="No" className="font-size-4">
-                        <span className="font-size-4 font-weight-normal">
-                          No
-                        </span>
-                      </Radio>
-                    </Radio.Group>
-                  </Form.Item>
-                </Col>
-                <Col
-                  xs={24}
-                  sm={24}
-                  md={12}
-                  lg={12}
-                  xl={8}
-                  className="pe-0 pe-md-3"
-                >
-                  <Form.Item
-                    className="align-self-start w-100 "
-                    name="sneezingStatus"
-                    label={
-                      <span className="font-size-4">
-                        5. Is your dog coughing or sneezing?
-                      </span>
-                    }
-                  >
-                    <Radio.Group
-                      name="sneezingStatus"
-                      value={sneezingStatus}
-                      onChange={(e) => {
-                        setSneezingStatus(e.target?.value);
-                      }}
-                    >
-                      <Radio value="Yes" className="font-size-4 me-5">
-                        <span className="font-size-4 font-weight-normal">
-                          Yes
-                        </span>
-                      </Radio>
-
-                      <Radio value="No" className="font-size-4">
-                        <span className="font-size-4 font-weight-normal">
-                          No
-                        </span>
-                      </Radio>
-                    </Radio.Group>
-                  </Form.Item>
-                </Col>
-                <Col
-                  xs={24}
-                  sm={24}
-                  md={12}
-                  lg={12}
-                  xl={8}
-                  className="pe-0 pe-md-3"
-                >
-                  <Form.Item
-                    className="align-self-start w-100 "
-                    name="breathingStatus"
-                    label={
-                      <span className="font-size-4">
-                        6. Does your dog have difficulty breathing?
-                      </span>
-                    }
-                  >
-                    <Radio.Group
-                      name="breathingStatus"
-                      value={breathingStatus}
-                      onChange={(e) => {
-                        setBreathingStatus(e.target?.value);
-                      }}
-                    >
-                      <Radio value="Yes" className="font-size-4 me-5">
-                        <span className="font-size-4 font-weight-normal">
-                          Yes
-                        </span>
-                      </Radio>
-
-                      <Radio value="No" className="font-size-4">
-                        <span className="font-size-4 font-weight-normal">
-                          No
-                        </span>
-                      </Radio>
-                    </Radio.Group>
-                  </Form.Item>
-                </Col>
-              </Row>
-
-              <h5 className="align-self-start mt-5 mb-4">
-                Skin and Coat Issues
-              </h5>
-              <Row className="w-100 ps-5">
-                <Col
-                  xs={24}
-                  sm={24}
-                  md={12}
-                  lg={12}
-                  xl={8}
-                  className="pe-0 pe-md-3"
-                >
-                  <Form.Item
-                    className="align-self-start w-100 "
-                    name="swellingStatus"
-                    label={
-                      <span className="font-size-4">
-                        1. Any visible rash, redness, or swelling?
-                      </span>
-                    }
-                  >
-                    <Radio.Group
-                      name="swellingStatus"
-                      value={swellingStatus}
-                      onChange={(e) => {
-                        setSwellingStatus(e.target?.value);
-                      }}
-                    >
-                      <Radio value="Yes" className="font-size-4 me-5">
-                        <span className="font-size-4 font-weight-normal">
-                          Yes
-                        </span>
-                      </Radio>
-
-                      <Radio value="No" className="font-size-4">
-                        <span className="font-size-4 font-weight-normal">
-                          No
-                        </span>
-                      </Radio>
-                    </Radio.Group>
-                  </Form.Item>
-                </Col>
-                <Col
-                  xs={24}
-                  sm={24}
-                  md={12}
-                  lg={12}
-                  xl={8}
-                  className="pe-0 pe-md-3"
-                >
-                  <Form.Item
-                    className="align-self-start w-100 "
-                    name="woundsStatus"
-                    label={
-                      <span className="font-size-4">
-                        2. Any wounds or cuts on the body?
-                      </span>
-                    }
-                  >
-                    <Radio.Group
-                      name="woundsStatus"
-                      value={woundsStatus}
-                      onChange={(e) => {
-                        setWoundsStatus(e.target?.value);
-                      }}
-                    >
-                      <Radio value="Yes" className="font-size-4 me-5">
-                        <span className="font-size-4 font-weight-normal">
-                          Yes
-                        </span>
-                      </Radio>
-
-                      <Radio value="No" className="font-size-4">
-                        <span className="font-size-4 font-weight-normal">
-                          No
-                        </span>
-                      </Radio>
-                    </Radio.Group>
-                  </Form.Item>
-                </Col>
-                <Col
-                  xs={24}
-                  sm={24}
-                  md={12}
-                  lg={12}
-                  xl={8}
-                  className="pe-0 pe-md-3"
-                >
-                  <Form.Item
-                    className="align-self-start w-100 "
-                    name="patchesStatus"
-                    label={
-                      <span className="font-size-4">
-                        3. Any hair loss or bald patches?
-                      </span>
-                    }
-                  >
-                    <Radio.Group
-                      name="patchesStatus"
-                      value={patchesStatus}
-                      onChange={(e) => {
-                        setPatchesStatus(e.target?.value);
-                      }}
-                    >
-                      <Radio value="Yes" className="font-size-4 me-5">
-                        <span className="font-size-4 font-weight-normal">
-                          Yes
-                        </span>
-                      </Radio>
-
-                      <Radio value="No" className="font-size-4">
-                        <span className="font-size-4 font-weight-normal">
-                          No
-                        </span>
-                      </Radio>
-                    </Radio.Group>
-                  </Form.Item>
-                </Col>
-                <Col
-                  xs={24}
-                  sm={24}
-                  md={12}
-                  lg={12}
-                  xl={8}
-                  className="pe-0 pe-md-3"
-                >
-                  <Form.Item
-                    className="align-self-start w-100 "
-                    name="scratchItselfStatus"
-                    label={
-                      <span className="font-size-4">
-                        4. Does the dog scratch itself excessively?
-                      </span>
-                    }
-                  >
-                    <Radio.Group
-                      name="scratchItselfStatus"
-                      value={scratchItselfStatus}
-                      onChange={(e) => {
-                        setScratchItselfStatus(e.target?.value);
-                      }}
-                    >
-                      <Radio value="Yes" className="font-size-4 me-5">
-                        <span className="font-size-4 font-weight-normal">
-                          Yes
-                        </span>
-                      </Radio>
-
-                      <Radio value="No" className="font-size-4">
-                        <span className="font-size-4 font-weight-normal">
-                          No
-                        </span>
-                      </Radio>
-                    </Radio.Group>
-                  </Form.Item>
-                </Col>
-              </Row>
-
-              <h5 className="align-self-start mt-5 mb-4">Eye & Ear Issues</h5>
-              <Row className="w-100 ps-5">
-                <Col
-                  xs={24}
-                  sm={24}
-                  md={12}
-                  lg={12}
-                  xl={8}
-                  className="pe-0 pe-md-3"
-                >
-                  <Form.Item
-                    className="align-self-start w-100 "
-                    name="eyesWateryStatus"
-                    label={
-                      <span className="font-size-4">
-                        1. Are the eyes red or watery?
-                      </span>
-                    }
-                  >
-                    <Radio.Group
-                      name="eyesWateryStatus"
-                      value={eyesWateryStatus}
-                      onChange={(e) => {
-                        setEyesWateryStatus(e.target?.value);
-                      }}
-                    >
-                      <Radio value="Yes" className="font-size-4 me-5">
-                        <span className="font-size-4 font-weight-normal">
-                          Yes
-                        </span>
-                      </Radio>
-
-                      <Radio value="No" className="font-size-4">
-                        <span className="font-size-4 font-weight-normal">
-                          No
-                        </span>
-                      </Radio>
-                    </Radio.Group>
-                  </Form.Item>
-                </Col>
-                <Col
-                  xs={24}
-                  sm={24}
-                  md={12}
-                  lg={12}
-                  xl={8}
-                  className="pe-0 pe-md-3"
-                >
-                  <Form.Item
-                    className="align-self-start w-100 "
-                    name="eyesDischargeStatus"
-                    label={
-                      <span className="font-size-4">
-                        2. Any yellow or green discharge from the eyes?
-                      </span>
-                    }
-                  >
-                    <Radio.Group
-                      name="eyesDischargeStatus"
-                      value={eyesDischargeStatus}
-                      onChange={(e) => {
-                        setEyesDischargeStatus(e.target?.value);
-                      }}
-                    >
-                      <Radio value="Yes" className="font-size-4 me-5">
-                        <span className="font-size-4 font-weight-normal">
-                          Yes
-                        </span>
-                      </Radio>
-
-                      <Radio value="No" className="font-size-4">
-                        <span className="font-size-4 font-weight-normal">
-                          No
-                        </span>
-                      </Radio>
-                    </Radio.Group>
-                  </Form.Item>
-                </Col>
-                <Col
-                  xs={24}
-                  sm={24}
-                  md={12}
-                  lg={12}
-                  xl={8}
-                  className="pe-0 pe-md-3"
-                >
-                  <Form.Item
-                    className="align-self-start w-100 "
-                    name="earOdorStatus"
-                    label={
-                      <span className="font-size-4">
-                        3. Any ear discharge or odor?
-                      </span>
-                    }
-                  >
-                    <Radio.Group
-                      name="earOdorStatus"
-                      value={earOdorStatus}
-                      onChange={(e) => {
-                        setEarOdorStatus(e.target?.value);
-                      }}
-                    >
-                      <Radio value="Yes" className="font-size-4 me-5">
-                        <span className="font-size-4 font-weight-normal">
-                          Yes
-                        </span>
-                      </Radio>
-
-                      <Radio value="No" className="font-size-4">
-                        <span className="font-size-4 font-weight-normal">
-                          No
-                        </span>
-                      </Radio>
-                    </Radio.Group>
-                  </Form.Item>
-                </Col>
-                <Col
-                  xs={24}
-                  sm={24}
-                  md={12}
-                  lg={12}
-                  xl={8}
-                  className="pe-0 pe-md-3"
-                >
-                  <Form.Item
-                    className="align-self-start w-100 "
-                    name="headShakeStatus"
-                    label={
-                      <span className="font-size-4">
-                        4. Does the dog shake its head frequently?
-                      </span>
-                    }
-                  >
-                    <Radio.Group
-                      name="headShakeStatus"
-                      value={headShakeStatus}
-                      onChange={(e) => {
-                        setHeadShakeStatus(e.target?.value);
-                      }}
-                    >
-                      <Radio value="Yes" className="font-size-4 me-5">
-                        <span className="font-size-4 font-weight-normal">
-                          Yes
-                        </span>
-                      </Radio>
-
-                      <Radio value="No" className="font-size-4">
-                        <span className="font-size-4 font-weight-normal">
-                          No
-                        </span>
-                      </Radio>
-                    </Radio.Group>
-                  </Form.Item>
-                </Col>
-              </Row>
-
-              <h5 className="align-self-start mt-5 mb-4">
-                Digestive & Eating Problems
-              </h5>
-              <Row className="w-100 ps-5">
-                <Col
-                  xs={24}
-                  sm={24}
-                  md={12}
-                  lg={12}
-                  xl={8}
-                  className="pe-0 pe-md-3"
-                >
-                  <Form.Item
-                    className="align-self-start w-100 "
-                    name="lessEatingStatus"
-                    label={
-                      <span className="font-size-4">
-                        1. Is your dog eating less than usual?
-                      </span>
-                    }
-                  >
-                    <Radio.Group
-                      name="lessEatingStatus"
-                      value={lessEatingStatus}
-                      onChange={(e) => {
-                        setLessEatingStatus(e.target?.value);
-                      }}
-                    >
-                      <Radio value="Yes" className="font-size-4 me-5">
-                        <span className="font-size-4 font-weight-normal">
-                          Yes
-                        </span>
-                      </Radio>
-
-                      <Radio value="No" className="font-size-4">
-                        <span className="font-size-4 font-weight-normal">
-                          No
-                        </span>
-                      </Radio>
-                    </Radio.Group>
-                  </Form.Item>
-                </Col>
-                <Col
-                  xs={24}
-                  sm={24}
-                  md={12}
-                  lg={12}
-                  xl={8}
-                  className="pe-0 pe-md-3"
-                >
-                  <Form.Item
-                    className="align-self-start w-100 "
-                    name="drinkStatus"
-                    label={
-                      <span className="font-size-4">
-                        2. Does your dog drink excessive water?
-                      </span>
-                    }
-                  >
-                    <Radio.Group
-                      name="drinkStatus"
-                      value={drinkStatus}
-                      onChange={(e) => {
-                        setDrinkStatus(e.target?.value);
-                      }}
-                    >
-                      <Radio value="Yes" className="font-size-4 me-5">
-                        <span className="font-size-4 font-weight-normal">
-                          Yes
-                        </span>
-                      </Radio>
-
-                      <Radio value="No" className="font-size-4">
-                        <span className="font-size-4 font-weight-normal">
-                          No
-                        </span>
-                      </Radio>
-                    </Radio.Group>
-                  </Form.Item>
-                </Col>
-                <Col
-                  xs={24}
-                  sm={24}
-                  md={12}
-                  lg={12}
-                  xl={8}
-                  className="pe-0 pe-md-3"
-                >
-                  <Form.Item
-                    className="align-self-start w-100 "
-                    name="abnormalStoolsStatus"
-                    label={
-                      <span className="font-size-4">
-                        3. Are there abnormal stools?
-                      </span>
-                    }
-                  >
-                    <Radio.Group
-                      name="abnormalStoolsStatus"
-                      value={abnormalStoolsStatus}
-                      onChange={(e) => {
-                        setAbnormalStoolsStatus(e.target?.value);
-                      }}
-                    >
-                      <Radio value="Color" className="font-size-4 me-5">
-                        <span className="font-size-4 font-weight-normal">
-                          Color
-                        </span>
-                      </Radio>
-                      <Radio value="Texture" className="font-size-4 me-5">
-                        <span className="font-size-4 font-weight-normal">
-                          Texture
-                        </span>
-                      </Radio>
-                      <Radio value="Blood" className="font-size-4 me-5">
-                        <span className="font-size-4 font-weight-normal">
-                          Blood
-                        </span>
-                      </Radio>
-
-                      <Radio value="No" className="font-size-4">
-                        <span className="font-size-4 font-weight-normal">
-                          No
-                        </span>
-                      </Radio>
-                    </Radio.Group>
-                  </Form.Item>
-                </Col>
-              </Row>
-
-              <h5 className="align-self-start mt-5 mb-4">Behavioral Changes</h5>
-              <Row className="w-100 ps-5">
-                <Col
-                  xs={24}
-                  sm={24}
-                  md={12}
-                  lg={12}
-                  xl={8}
-                  className="pe-0 pe-md-3"
-                >
-                  <Form.Item
-                    className="align-self-start w-100 "
-                    name="aggressiveStatus"
-                    label={
-                      <span className="font-size-4">
-                        1. Is your dog acting more aggressive or irritable?
-                      </span>
-                    }
-                  >
-                    <Radio.Group
-                      name="aggressiveStatus"
-                      value={aggressiveStatus}
-                      onChange={(e) => {
-                        setAggressiveStatus(e.target?.value);
-                      }}
-                    >
-                      <Radio value="Yes" className="font-size-4 me-5">
-                        <span className="font-size-4 font-weight-normal">
-                          Yes
-                        </span>
-                      </Radio>
-
-                      <Radio value="No" className="font-size-4">
-                        <span className="font-size-4 font-weight-normal">
-                          No
-                        </span>
-                      </Radio>
-                    </Radio.Group>
-                  </Form.Item>
-                </Col>
-                <Col
-                  xs={24}
-                  sm={24}
-                  md={12}
-                  lg={12}
-                  xl={8}
-                  className="pe-0 pe-md-3"
-                >
-                  <Form.Item
-                    className="align-self-start w-100 "
-                    name="interactionStatus"
-                    label={
-                      <span className="font-size-4">
-                        2. Is your dog hiding or avoiding interaction?
-                      </span>
-                    }
-                  >
-                    <Radio.Group
-                      name="interactionStatus"
-                      value={interactionStatus}
-                      onChange={(e) => {
-                        setInteractionStatus(e.target?.value);
-                      }}
-                    >
-                      <Radio value="Yes" className="font-size-4 me-5">
-                        <span className="font-size-4 font-weight-normal">
-                          Yes
-                        </span>
-                      </Radio>
-
-                      <Radio value="No" className="font-size-4">
-                        <span className="font-size-4 font-weight-normal">
-                          No
-                        </span>
-                      </Radio>
-                    </Radio.Group>
-                  </Form.Item>
-                </Col>
-                <Col
-                  xs={24}
-                  sm={24}
-                  md={12}
-                  lg={12}
-                  xl={8}
-                  className="pe-0 pe-md-3"
-                >
-                  <Form.Item
-                    className="align-self-start w-100 "
-                    name="paceOrWhineStatus"
-                    label={
-                      <span className="font-size-4">
-                        3. Does your dog pace or whine excessively?
-                      </span>
-                    }
-                  >
-                    <Radio.Group
-                      name="paceOrWhineStatus"
-                      value={paceOrWhineStatus}
-                      onChange={(e) => {
-                        setPaceOrWhineStatus(e.target?.value);
-                      }}
-                    >
-                      <Radio value="Yes" className="font-size-4 me-5">
-                        <span className="font-size-4 font-weight-normal">
-                          Yes
-                        </span>
-                      </Radio>
-
-                      <Radio value="No" className="font-size-4">
-                        <span className="font-size-4 font-weight-normal">
-                          No
-                        </span>
-                      </Radio>
-                    </Radio.Group>
-                  </Form.Item>
-                </Col>
-                <Col
-                  xs={24}
-                  sm={24}
-                  md={12}
-                  lg={12}
-                  xl={8}
-                  className="pe-0 pe-md-3"
-                >
-                  <Form.Item
-                    className="align-self-start w-100 "
-                    name="painStatus"
-                    label={
-                      <span className="font-size-4">
-                        4. Does your dog appear to be in pain?
-                      </span>
-                    }
-                  >
-                    <Radio.Group
-                      name="painStatus"
-                      value={painStatus}
-                      onChange={(e) => {
-                        setPainStatus(e.target?.value);
-                      }}
-                    >
-                      <Radio value="Whining" className="font-size-4 me-5">
-                        <span className="font-size-4 font-weight-normal">
-                          Whining
-                        </span>
-                      </Radio>
-
-                      <Radio value="Limping" className="font-size-4 me-5">
-                        <span className="font-size-4 font-weight-normal">
-                          Limping
-                        </span>
-                      </Radio>
-                      <Radio
-                        value="Difficulty Moving"
-                        className="font-size-4 me-5"
+                    <Col xs={24} sm={24} md={12} className="pe-0 pe-md-3">
+                      <Form.Item
+                        name="dogName"
+                        label={<span className="font-size-4">Dog's Name</span>}
                       >
-                        <span className="font-size-4 font-weight-normal">
-                          Difficulty Moving
-                        </span>
-                      </Radio>
-                      <Radio value="No" className="font-size-4">
-                        <span className="font-size-4 font-weight-normal">
-                          No
-                        </span>
-                      </Radio>
-                    </Radio.Group>
-                  </Form.Item>
-                </Col>
-              </Row>
-
-              <h5 className="align-self-start mt-5 mb-4">
-                Additional Information
-              </h5>
-              <Row className="w-100 ps-5">
-                <Col
-                  xs={24}
-                  sm={24}
-                  md={24}
-                  lg={24}
-                  xl={8}
-                  className="pe-0 pe-md-3"
-                >
-                  <Form.Item
-                    className="align-self-start w-100 "
-                    name="foodChangeStatus"
-                    label={
-                      <span className="font-size-4">
-                        1. Recent food changes?
-                      </span>
-                    }
-                  >
-                    <Radio.Group
-                      name="foodChangeStatus"
-                      value={foodChangeStatus}
-                      onChange={(e) => {
-                        setFoodChangeStatus(e.target?.value);
-                      }}
+                        <Input
+                          size="large"
+                          id="dogName"
+                          name="dogName"
+                          value={dogName}
+                          placeholder="Enter your dog's name"
+                          className="rounded-4 p-3"
+                          type="text"
+                          onChange={(e) => setDogName(e.target.value)}
+                        />
+                      </Form.Item>
+                    </Col>
+                    <Col xs={24} sm={24} md={12} className="ps-0 ps-md-3">
+                      <Form.Item
+                        name="selectedDogBreed"
+                        label={<span className="font-size-4">Dog Breed</span>}
+                      >
+                        <Select
+                          showSearch
+                          placeholder="Select your dog breed"
+                          optionFilterProp="label"
+                          style={{ height: 55 }}
+                          value={selectedDogBreed}
+                          onChange={(e) => {
+                            console.log(e);
+                            setSelectedDogBreed(e ? e : "");
+                          }}
+                          options={dogBreedList}
+                        />
+                      </Form.Item>
+                    </Col>
+                    <Col xs={24} sm={24} md={12} className="pe-0 pe-md-3">
+                      <Form.Item
+                        name="age"
+                        label={
+                          <span className="font-size-4">
+                            Dog's Age (in years)
+                          </span>
+                        }
+                      >
+                        <Input
+                          size="large"
+                          id="age"
+                          name="age"
+                          max={30}
+                          value={age}
+                          placeholder="Enter your dog's age"
+                          className="rounded-4 p-3"
+                          type="number"
+                          onChange={(e) => setAge(e.target.value)}
+                        />
+                      </Form.Item>
+                    </Col>
+                    <Col xs={24} sm={24} md={12} className="ps-0 ps-md-3">
+                      <Form.Item
+                        name="weight"
+                        label={
+                          <span className="font-size-4">
+                            Dog's Weight (in kg)
+                          </span>
+                        }
+                      >
+                        <Input
+                          size="large"
+                          id="weight"
+                          name="weight"
+                          value={weight}
+                          placeholder="Enter your dog's weight"
+                          className="rounded-4 p-3"
+                          type="number"
+                          onChange={(e) => setWeight(e.target.value)}
+                        />
+                      </Form.Item>
+                    </Col>
+                    <Col
+                      xs={24}
+                      sm={24}
+                      md={24}
+                      lg={12}
+                      xl={12}
+                      className="pe-0 pe-md-3"
                     >
-                      <Radio value="Yes" className="font-size-4 me-5">
-                        <span className="font-size-4 font-weight-normal">
-                          Yes
-                        </span>
-                      </Radio>
+                      <Form.Item
+                        className="align-self-start w-100"
+                        name="gender"
+                        label={<span className="font-size-4">Gender</span>}
+                      >
+                        <Radio.Group
+                          name="gender"
+                          value={gender}
+                          onChange={(e) => {
+                            setGender(e.target?.value);
+                          }}
+                        >
+                          <Radio value="Male" className="font-size-4 me-5">
+                            <span className="font-size-4 font-weight-normal">
+                              Male
+                            </span>
+                          </Radio>
 
-                      <Radio value="No" className="font-size-4">
-                        <span className="font-size-4 font-weight-normal">
-                          No
-                        </span>
-                      </Radio>
-                    </Radio.Group>
-                  </Form.Item>
-                </Col>
-                <Col
-                  xs={24}
-                  sm={24}
-                  md={12}
-                  lg={12}
-                  xl={8}
-                  className="pe-0 pe-md-3"
-                >
-                  <Form.Item
-                    className="align-self-start w-100 "
-                    name="exposureToSickDogesStatus"
-                    label={
-                      <span className="font-size-4">
-                        2. Any recent exposure to other sick dogs?
-                      </span>
-                    }
-                  >
-                    <Radio.Group
-                      name="exposureToSickDogesStatus"
-                      value={exposureToSickDogesStatus}
-                      onChange={(e) => {
-                        setExposureToSickDogesStatus(e.target?.value);
-                      }}
+                          <Radio value="Female" className="font-size-4">
+                            <span className="font-size-4 font-weight-normal">
+                              Female
+                            </span>
+                          </Radio>
+                        </Radio.Group>
+                      </Form.Item>
+                    </Col>
+                    <Col
+                      xs={24}
+                      sm={24}
+                      md={24}
+                      lg={12}
+                      xl={12}
+                      className="pe-0 pe-md-3"
                     >
-                      <Radio value="Yes" className="font-size-4 me-5">
-                        <span className="font-size-4 font-weight-normal">
-                          Yes
-                        </span>
-                      </Radio>
+                      <Form.Item
+                        className="align-self-start w-100"
+                        name="spayedOrNeutered"
+                        label={
+                          <span className="font-size-4">Spayed / Neutered</span>
+                        }
+                      >
+                        <Radio.Group
+                          name="spayedOrNeutered"
+                          value={spayedOrNeutered}
+                          onChange={(e) => {
+                            setSpayedOrNeutered(e.target?.value);
+                          }}
+                        >
+                          <Radio value="Yes" className="font-size-4 me-5">
+                            <span className="font-size-4 font-weight-normal">
+                              Yes
+                            </span>
+                          </Radio>
 
-                      <Radio value="No" className="font-size-4">
-                        <span className="font-size-4 font-weight-normal">
-                          No
-                        </span>
-                      </Radio>
-                    </Radio.Group>
-                  </Form.Item>
+                          <Radio value="No" className="font-size-4">
+                            <span className="font-size-4 font-weight-normal">
+                              No
+                            </span>
+                          </Radio>
+                        </Radio.Group>
+                      </Form.Item>
+                    </Col>
+                    <Col
+                      xs={24}
+                      sm={24}
+                      md={24}
+                      lg={24}
+                      xl={24}
+                      className="pe-0 pe-md-3"
+                    >
+                      <Form.Item
+                        className="align-self-start w-100"
+                        name="vaccinationStatus"
+                        label={
+                          <span className="font-size-4">
+                            Vaccination Status
+                          </span>
+                        }
+                      >
+                        <Radio.Group
+                          name="vaccinationStatus"
+                          value={vaccinationStatus}
+                          onChange={(e) => {
+                            setVaccinationStatus(e.target?.value);
+                          }}
+                        >
+                          <Radio
+                            value="Up to date"
+                            className="font-size-4 me-5"
+                          >
+                            <span className="font-size-4 font-weight-normal">
+                              Up to date
+                            </span>
+                          </Radio>
+
+                          <Radio value="Not up to date" className="font-size-4">
+                            <span className="font-size-4 font-weight-normal">
+                              Not up to date
+                            </span>
+                          </Radio>
+                        </Radio.Group>
+                      </Form.Item>
+                    </Col>
+                  </Row>
+                  <h5 className="align-self-start mt-5 mb-4">
+                    General Symptoms
+                  </h5>
+                  <Row
+                    className="w-100 p-4 rounded-4"
+                    style={{ backgroundColor: "#6bafd648" }}
+                  >
+                    <Col
+                      xs={24}
+                      sm={24}
+                      md={24}
+                      lg={24}
+                      xl={24}
+                      className="pe-0 pe-md-3"
+                    >
+                      <Form.Item
+                        className="align-self-start w-100 "
+                        name="feverStatus"
+                        label={
+                          <span className="font-size-4">
+                            1. Does your dog have fever?
+                          </span>
+                        }
+                      >
+                        <Radio.Group
+                          name="feverStatus"
+                          value={feverStatus}
+                          onChange={(e) => {
+                            setFeverStatus(e.target?.value);
+                          }}
+                        >
+                          <Radio value="Yes" className="font-size-4 me-5">
+                            <span className="font-size-4 font-weight-normal">
+                              Yes
+                            </span>
+                          </Radio>
+
+                          <Radio value="No" className="font-size-4 me-5">
+                            <span className="font-size-4 font-weight-normal">
+                              No
+                            </span>
+                          </Radio>
+                          <Radio value="NotShure" className="font-size-4">
+                            <span className="font-size-4 font-weight-normal">
+                              Not Shure
+                            </span>
+                          </Radio>
+                        </Radio.Group>
+                      </Form.Item>
+                    </Col>
+                    <Col
+                      xs={24}
+                      sm={24}
+                      md={24}
+                      lg={24}
+                      xl={24}
+                      className="pe-0 pe-md-3"
+                    >
+                      <Form.Item
+                        className="align-self-start w-100 "
+                        name="eatingStatus"
+                        label={
+                          <span className="font-size-4">
+                            2. Is your dog eating normally?
+                          </span>
+                        }
+                      >
+                        <Radio.Group
+                          name="eatingStatus"
+                          value={eatingStatus}
+                          onChange={(e) => {
+                            setEatingStatus(e.target?.value);
+                          }}
+                        >
+                          <Radio value="Yes" className="font-size-4 me-5">
+                            <span className="font-size-4 font-weight-normal">
+                              Yes
+                            </span>
+                          </Radio>
+
+                          <Radio value="No" className="font-size-4">
+                            <span className="font-size-4 font-weight-normal">
+                              No
+                            </span>
+                          </Radio>
+                        </Radio.Group>
+                      </Form.Item>
+                    </Col>
+                    <Col
+                      xs={24}
+                      sm={24}
+                      md={24}
+                      lg={24}
+                      xl={24}
+                      className="pe-0 pe-md-3"
+                    >
+                      <Form.Item
+                        className="align-self-start w-100 "
+                        name="weaknessStatus"
+                        label={
+                          <span className="font-size-4">
+                            3. Does your dog show signs of lethargy or weakness?
+                          </span>
+                        }
+                      >
+                        <Radio.Group
+                          name="weaknessStatus"
+                          value={weaknessStatus}
+                          onChange={(e) => {
+                            setWeaknessStatus(e.target?.value);
+                          }}
+                        >
+                          <Radio value="Yes" className="font-size-4 me-5">
+                            <span className="font-size-4 font-weight-normal">
+                              Yes
+                            </span>
+                          </Radio>
+
+                          <Radio value="No" className="font-size-4">
+                            <span className="font-size-4 font-weight-normal">
+                              No
+                            </span>
+                          </Radio>
+                        </Radio.Group>
+                      </Form.Item>
+                    </Col>
+                    <Col
+                      xs={24}
+                      sm={24}
+                      md={24}
+                      lg={24}
+                      xl={24}
+                      className="pe-0 pe-md-3"
+                    >
+                      <Form.Item
+                        className="align-self-start w-100 "
+                        name="vomitingStatus"
+                        label={
+                          <span className="font-size-4">
+                            4. Is your dog vomiting?
+                          </span>
+                        }
+                      >
+                        <Radio.Group
+                          name="vomitingStatus"
+                          value={vomitingStatus}
+                          onChange={(e) => {
+                            setVomitingStatus(e.target?.value);
+                          }}
+                        >
+                          <Radio value="Yes" className="font-size-4 me-5">
+                            <span className="font-size-4 font-weight-normal">
+                              Yes
+                            </span>
+                          </Radio>
+
+                          <Radio value="No" className="font-size-4">
+                            <span className="font-size-4 font-weight-normal">
+                              No
+                            </span>
+                          </Radio>
+                        </Radio.Group>
+                      </Form.Item>
+                    </Col>
+                    <Col
+                      xs={24}
+                      sm={24}
+                      md={24}
+                      lg={24}
+                      xl={24}
+                      className="pe-0 pe-md-3"
+                    >
+                      <Form.Item
+                        className="align-self-start w-100 "
+                        name="sneezingStatus"
+                        label={
+                          <span className="font-size-4">
+                            5. Is your dog coughing or sneezing?
+                          </span>
+                        }
+                      >
+                        <Radio.Group
+                          name="sneezingStatus"
+                          value={sneezingStatus}
+                          onChange={(e) => {
+                            setSneezingStatus(e.target?.value);
+                          }}
+                        >
+                          <Radio value="Yes" className="font-size-4 me-5">
+                            <span className="font-size-4 font-weight-normal">
+                              Yes
+                            </span>
+                          </Radio>
+
+                          <Radio value="No" className="font-size-4">
+                            <span className="font-size-4 font-weight-normal">
+                              No
+                            </span>
+                          </Radio>
+                        </Radio.Group>
+                      </Form.Item>
+                    </Col>
+                    <Col
+                      xs={24}
+                      sm={24}
+                      md={24}
+                      lg={24}
+                      xl={24}
+                      className="pe-0 pe-md-3"
+                    >
+                      <Form.Item
+                        className="align-self-start w-100 "
+                        name="breathingStatus"
+                        label={
+                          <span className="font-size-4">
+                            6. Does your dog have difficulty breathing?
+                          </span>
+                        }
+                      >
+                        <Radio.Group
+                          name="breathingStatus"
+                          value={breathingStatus}
+                          onChange={(e) => {
+                            setBreathingStatus(e.target?.value);
+                          }}
+                        >
+                          <Radio value="Yes" className="font-size-4 me-5">
+                            <span className="font-size-4 font-weight-normal">
+                              Yes
+                            </span>
+                          </Radio>
+
+                          <Radio value="No" className="font-size-4">
+                            <span className="font-size-4 font-weight-normal">
+                              No
+                            </span>
+                          </Radio>
+                        </Radio.Group>
+                      </Form.Item>
+                    </Col>
+                  </Row>
+                  <h5 className="align-self-start mt-5 mb-4">
+                    Skin and Coat Issues
+                  </h5>
+                  <Row
+                    className="w-100 p-4 rounded-4"
+                    style={{ backgroundColor: "#6bafd648" }}
+                  >
+                    <Col
+                      xs={24}
+                      sm={24}
+                      md={24}
+                      lg={24}
+                      xl={24}
+                      className="pe-0 pe-md-3"
+                    >
+                      <Form.Item
+                        className="align-self-start w-100 "
+                        name="swellingStatus"
+                        label={
+                          <span className="font-size-4">
+                            1. Any visible rash, redness, or swelling?
+                          </span>
+                        }
+                      >
+                        <Radio.Group
+                          name="swellingStatus"
+                          value={swellingStatus}
+                          onChange={(e) => {
+                            setSwellingStatus(e.target?.value);
+                          }}
+                        >
+                          <Radio value="Yes" className="font-size-4 me-5">
+                            <span className="font-size-4 font-weight-normal">
+                              Yes
+                            </span>
+                          </Radio>
+
+                          <Radio value="No" className="font-size-4">
+                            <span className="font-size-4 font-weight-normal">
+                              No
+                            </span>
+                          </Radio>
+                        </Radio.Group>
+                      </Form.Item>
+                    </Col>
+                    <Col
+                      xs={24}
+                      sm={24}
+                      md={24}
+                      lg={24}
+                      xl={24}
+                      className="pe-0 pe-md-3"
+                    >
+                      <Form.Item
+                        className="align-self-start w-100 "
+                        name="woundsStatus"
+                        label={
+                          <span className="font-size-4">
+                            2. Any wounds or cuts on the body?
+                          </span>
+                        }
+                      >
+                        <Radio.Group
+                          name="woundsStatus"
+                          value={woundsStatus}
+                          onChange={(e) => {
+                            setWoundsStatus(e.target?.value);
+                          }}
+                        >
+                          <Radio value="Yes" className="font-size-4 me-5">
+                            <span className="font-size-4 font-weight-normal">
+                              Yes
+                            </span>
+                          </Radio>
+
+                          <Radio value="No" className="font-size-4">
+                            <span className="font-size-4 font-weight-normal">
+                              No
+                            </span>
+                          </Radio>
+                        </Radio.Group>
+                      </Form.Item>
+                    </Col>
+                    <Col
+                      xs={24}
+                      sm={24}
+                      md={24}
+                      lg={24}
+                      xl={24}
+                      className="pe-0 pe-md-3"
+                    >
+                      <Form.Item
+                        className="align-self-start w-100 "
+                        name="patchesStatus"
+                        label={
+                          <span className="font-size-4">
+                            3. Any hair loss or bald patches?
+                          </span>
+                        }
+                      >
+                        <Radio.Group
+                          name="patchesStatus"
+                          value={patchesStatus}
+                          onChange={(e) => {
+                            setPatchesStatus(e.target?.value);
+                          }}
+                        >
+                          <Radio value="Yes" className="font-size-4 me-5">
+                            <span className="font-size-4 font-weight-normal">
+                              Yes
+                            </span>
+                          </Radio>
+
+                          <Radio value="No" className="font-size-4">
+                            <span className="font-size-4 font-weight-normal">
+                              No
+                            </span>
+                          </Radio>
+                        </Radio.Group>
+                      </Form.Item>
+                    </Col>
+                    <Col
+                      xs={24}
+                      sm={24}
+                      md={24}
+                      lg={24}
+                      xl={24}
+                      className="pe-0 pe-md-3"
+                    >
+                      <Form.Item
+                        className="align-self-start w-100 "
+                        name="scratchItselfStatus"
+                        label={
+                          <span className="font-size-4">
+                            4. Does the dog scratch itself excessively?
+                          </span>
+                        }
+                      >
+                        <Radio.Group
+                          name="scratchItselfStatus"
+                          value={scratchItselfStatus}
+                          onChange={(e) => {
+                            setScratchItselfStatus(e.target?.value);
+                          }}
+                        >
+                          <Radio value="Yes" className="font-size-4 me-5">
+                            <span className="font-size-4 font-weight-normal">
+                              Yes
+                            </span>
+                          </Radio>
+
+                          <Radio value="No" className="font-size-4">
+                            <span className="font-size-4 font-weight-normal">
+                              No
+                            </span>
+                          </Radio>
+                        </Radio.Group>
+                      </Form.Item>
+                    </Col>
+                  </Row>
+                </Col>
+                <Col xs={24} sm={24} md={12} className="ps-3">
+                  <h5 className="align-self-start mb-4">Eye & Ear Issues</h5>
+                  <Row
+                    className="w-100 p-4 rounded-4"
+                    style={{ backgroundColor: "#6bafd648" }}
+                  >
+                    <Col
+                      xs={24}
+                      sm={24}
+                      md={24}
+                      lg={24}
+                      xl={24}
+                      className="pe-0 pe-md-3"
+                    >
+                      <Form.Item
+                        className="align-self-start w-100 "
+                        name="eyesWateryStatus"
+                        label={
+                          <span className="font-size-4">
+                            1. Are the eyes red or watery?
+                          </span>
+                        }
+                      >
+                        <Radio.Group
+                          name="eyesWateryStatus"
+                          value={eyesWateryStatus}
+                          onChange={(e) => {
+                            setEyesWateryStatus(e.target?.value);
+                          }}
+                        >
+                          <Radio value="Yes" className="font-size-4 me-5">
+                            <span className="font-size-4 font-weight-normal">
+                              Yes
+                            </span>
+                          </Radio>
+
+                          <Radio value="No" className="font-size-4">
+                            <span className="font-size-4 font-weight-normal">
+                              No
+                            </span>
+                          </Radio>
+                        </Radio.Group>
+                      </Form.Item>
+                    </Col>
+                    <Col
+                      xs={24}
+                      sm={24}
+                      md={24}
+                      lg={24}
+                      xl={24}
+                      className="pe-0 pe-md-3"
+                    >
+                      <Form.Item
+                        className="align-self-start w-100 "
+                        name="eyesDischargeStatus"
+                        label={
+                          <span className="font-size-4">
+                            2. Any yellow or green discharge from the eyes?
+                          </span>
+                        }
+                      >
+                        <Radio.Group
+                          name="eyesDischargeStatus"
+                          value={eyesDischargeStatus}
+                          onChange={(e) => {
+                            setEyesDischargeStatus(e.target?.value);
+                          }}
+                        >
+                          <Radio value="Yes" className="font-size-4 me-5">
+                            <span className="font-size-4 font-weight-normal">
+                              Yes
+                            </span>
+                          </Radio>
+
+                          <Radio value="No" className="font-size-4">
+                            <span className="font-size-4 font-weight-normal">
+                              No
+                            </span>
+                          </Radio>
+                        </Radio.Group>
+                      </Form.Item>
+                    </Col>
+                    <Col
+                      xs={24}
+                      sm={24}
+                      md={24}
+                      lg={24}
+                      xl={24}
+                      className="pe-0 pe-md-3"
+                    >
+                      <Form.Item
+                        className="align-self-start w-100 "
+                        name="earOdorStatus"
+                        label={
+                          <span className="font-size-4">
+                            3. Any ear discharge or odor?
+                          </span>
+                        }
+                      >
+                        <Radio.Group
+                          name="earOdorStatus"
+                          value={earOdorStatus}
+                          onChange={(e) => {
+                            setEarOdorStatus(e.target?.value);
+                          }}
+                        >
+                          <Radio value="Yes" className="font-size-4 me-5">
+                            <span className="font-size-4 font-weight-normal">
+                              Yes
+                            </span>
+                          </Radio>
+
+                          <Radio value="No" className="font-size-4">
+                            <span className="font-size-4 font-weight-normal">
+                              No
+                            </span>
+                          </Radio>
+                        </Radio.Group>
+                      </Form.Item>
+                    </Col>
+                    <Col
+                      xs={24}
+                      sm={24}
+                      md={24}
+                      lg={24}
+                      xl={24}
+                      className="pe-0 pe-md-3"
+                    >
+                      <Form.Item
+                        className="align-self-start w-100 "
+                        name="headShakeStatus"
+                        label={
+                          <span className="font-size-4">
+                            4. Does the dog shake its head frequently?
+                          </span>
+                        }
+                      >
+                        <Radio.Group
+                          name="headShakeStatus"
+                          value={headShakeStatus}
+                          onChange={(e) => {
+                            setHeadShakeStatus(e.target?.value);
+                          }}
+                        >
+                          <Radio value="Yes" className="font-size-4 me-5">
+                            <span className="font-size-4 font-weight-normal">
+                              Yes
+                            </span>
+                          </Radio>
+
+                          <Radio value="No" className="font-size-4">
+                            <span className="font-size-4 font-weight-normal">
+                              No
+                            </span>
+                          </Radio>
+                        </Radio.Group>
+                      </Form.Item>
+                    </Col>
+                  </Row>
+
+                  <h5 className="align-self-start mt-5 mb-4">
+                    Digestive & Eating Problems
+                  </h5>
+                  <Row
+                    className="w-100 p-4 rounded-4"
+                    style={{ backgroundColor: "#6bafd648" }}
+                  >
+                    <Col
+                      xs={24}
+                      sm={24}
+                      md={24}
+                      lg={24}
+                      xl={24}
+                      className="pe-0 pe-md-3"
+                    >
+                      <Form.Item
+                        className="align-self-start w-100 "
+                        name="lessEatingStatus"
+                        label={
+                          <span className="font-size-4">
+                            1. Is your dog eating less than usual?
+                          </span>
+                        }
+                      >
+                        <Radio.Group
+                          name="lessEatingStatus"
+                          value={lessEatingStatus}
+                          onChange={(e) => {
+                            setLessEatingStatus(e.target?.value);
+                          }}
+                        >
+                          <Radio value="Yes" className="font-size-4 me-5">
+                            <span className="font-size-4 font-weight-normal">
+                              Yes
+                            </span>
+                          </Radio>
+
+                          <Radio value="No" className="font-size-4">
+                            <span className="font-size-4 font-weight-normal">
+                              No
+                            </span>
+                          </Radio>
+                        </Radio.Group>
+                      </Form.Item>
+                    </Col>
+                    <Col
+                      xs={24}
+                      sm={24}
+                      md={24}
+                      lg={24}
+                      xl={24}
+                      className="pe-0 pe-md-3"
+                    >
+                      <Form.Item
+                        className="align-self-start w-100 "
+                        name="drinkStatus"
+                        label={
+                          <span className="font-size-4">
+                            2. Does your dog drink excessive water?
+                          </span>
+                        }
+                      >
+                        <Radio.Group
+                          name="drinkStatus"
+                          value={drinkStatus}
+                          onChange={(e) => {
+                            setDrinkStatus(e.target?.value);
+                          }}
+                        >
+                          <Radio value="Yes" className="font-size-4 me-5">
+                            <span className="font-size-4 font-weight-normal">
+                              Yes
+                            </span>
+                          </Radio>
+
+                          <Radio value="No" className="font-size-4">
+                            <span className="font-size-4 font-weight-normal">
+                              No
+                            </span>
+                          </Radio>
+                        </Radio.Group>
+                      </Form.Item>
+                    </Col>
+                    <Col
+                      xs={24}
+                      sm={24}
+                      md={24}
+                      lg={24}
+                      xl={24}
+                      className="pe-0 pe-md-3"
+                    >
+                      <Form.Item
+                        className="align-self-start w-100 "
+                        name="abnormalStoolsStatus"
+                        label={
+                          <span className="font-size-4">
+                            3. Are there abnormal stools?
+                          </span>
+                        }
+                      >
+                        <Radio.Group
+                          name="abnormalStoolsStatus"
+                          value={abnormalStoolsStatus}
+                          onChange={(e) => {
+                            setAbnormalStoolsStatus(e.target?.value);
+                          }}
+                        >
+                          <Radio value="Color" className="font-size-4 me-5">
+                            <span className="font-size-4 font-weight-normal">
+                              Color
+                            </span>
+                          </Radio>
+                          <Radio value="Texture" className="font-size-4 me-5">
+                            <span className="font-size-4 font-weight-normal">
+                              Texture
+                            </span>
+                          </Radio>
+                          <Radio value="Blood" className="font-size-4 me-5">
+                            <span className="font-size-4 font-weight-normal">
+                              Blood
+                            </span>
+                          </Radio>
+
+                          <Radio value="No" className="font-size-4">
+                            <span className="font-size-4 font-weight-normal">
+                              No
+                            </span>
+                          </Radio>
+                        </Radio.Group>
+                      </Form.Item>
+                    </Col>
+                  </Row>
+                  <h5 className="align-self-start mt-5 mb-4">
+                    Behavioral Changes
+                  </h5>
+                  <Row
+                    className="w-100 p-4 rounded-4"
+                    style={{ backgroundColor: "#6bafd648" }}
+                  >
+                    <Col
+                      xs={24}
+                      sm={24}
+                      md={24}
+                      lg={24}
+                      xl={24}
+                      className="pe-0 pe-md-3"
+                    >
+                      <Form.Item
+                        className="align-self-start w-100 "
+                        name="aggressiveStatus"
+                        label={
+                          <span className="font-size-4">
+                            1. Is your dog acting more aggressive or irritable?
+                          </span>
+                        }
+                      >
+                        <Radio.Group
+                          name="aggressiveStatus"
+                          value={aggressiveStatus}
+                          onChange={(e) => {
+                            setAggressiveStatus(e.target?.value);
+                          }}
+                        >
+                          <Radio value="Yes" className="font-size-4 me-5">
+                            <span className="font-size-4 font-weight-normal">
+                              Yes
+                            </span>
+                          </Radio>
+
+                          <Radio value="No" className="font-size-4">
+                            <span className="font-size-4 font-weight-normal">
+                              No
+                            </span>
+                          </Radio>
+                        </Radio.Group>
+                      </Form.Item>
+                    </Col>
+                    <Col
+                      xs={24}
+                      sm={24}
+                      md={24}
+                      lg={24}
+                      xl={24}
+                      className="pe-0 pe-md-3"
+                    >
+                      <Form.Item
+                        className="align-self-start w-100 "
+                        name="interactionStatus"
+                        label={
+                          <span className="font-size-4">
+                            2. Is your dog hiding or avoiding interaction?
+                          </span>
+                        }
+                      >
+                        <Radio.Group
+                          name="interactionStatus"
+                          value={interactionStatus}
+                          onChange={(e) => {
+                            setInteractionStatus(e.target?.value);
+                          }}
+                        >
+                          <Radio value="Yes" className="font-size-4 me-5">
+                            <span className="font-size-4 font-weight-normal">
+                              Yes
+                            </span>
+                          </Radio>
+
+                          <Radio value="No" className="font-size-4">
+                            <span className="font-size-4 font-weight-normal">
+                              No
+                            </span>
+                          </Radio>
+                        </Radio.Group>
+                      </Form.Item>
+                    </Col>
+                    <Col
+                      xs={24}
+                      sm={24}
+                      md={24}
+                      lg={24}
+                      xl={24}
+                      className="pe-0 pe-md-3"
+                    >
+                      <Form.Item
+                        className="align-self-start w-100 "
+                        name="paceOrWhineStatus"
+                        label={
+                          <span className="font-size-4">
+                            3. Does your dog pace or whine excessively?
+                          </span>
+                        }
+                      >
+                        <Radio.Group
+                          name="paceOrWhineStatus"
+                          value={paceOrWhineStatus}
+                          onChange={(e) => {
+                            setPaceOrWhineStatus(e.target?.value);
+                          }}
+                        >
+                          <Radio value="Yes" className="font-size-4 me-5">
+                            <span className="font-size-4 font-weight-normal">
+                              Yes
+                            </span>
+                          </Radio>
+
+                          <Radio value="No" className="font-size-4">
+                            <span className="font-size-4 font-weight-normal">
+                              No
+                            </span>
+                          </Radio>
+                        </Radio.Group>
+                      </Form.Item>
+                    </Col>
+                    <Col
+                      xs={24}
+                      sm={24}
+                      md={24}
+                      lg={24}
+                      xl={24}
+                      className="pe-0 pe-md-3"
+                    >
+                      <Form.Item
+                        className="align-self-start w-100 "
+                        name="painStatus"
+                        label={
+                          <span className="font-size-4">
+                            4. Does your dog appear to be in pain?
+                          </span>
+                        }
+                      >
+                        <Radio.Group
+                          name="painStatus"
+                          value={painStatus}
+                          onChange={(e) => {
+                            setPainStatus(e.target?.value);
+                          }}
+                        >
+                          <Radio value="Whining" className="font-size-4 me-5">
+                            <span className="font-size-4 font-weight-normal">
+                              Whining
+                            </span>
+                          </Radio>
+
+                          <Radio value="Limping" className="font-size-4 me-5">
+                            <span className="font-size-4 font-weight-normal">
+                              Limping
+                            </span>
+                          </Radio>
+                          <Radio
+                            value="Difficulty Moving"
+                            className="font-size-4 me-5"
+                          >
+                            <span className="font-size-4 font-weight-normal">
+                              Difficulty Moving
+                            </span>
+                          </Radio>
+                          <Radio value="No" className="font-size-4">
+                            <span className="font-size-4 font-weight-normal">
+                              No
+                            </span>
+                          </Radio>
+                        </Radio.Group>
+                      </Form.Item>
+                    </Col>
+                  </Row>
+
+                  <h5 className="align-self-start mt-5 mb-4">
+                    Additional Information
+                  </h5>
+                  <Row
+                    className="w-100 p-4 rounded-4"
+                    style={{ backgroundColor: "#6bafd648" }}
+                  >
+                    <Col
+                      xs={24}
+                      sm={24}
+                      md={24}
+                      lg={24}
+                      xl={24}
+                      className="pe-0 pe-md-3"
+                    >
+                      <Form.Item
+                        className="align-self-start w-100 "
+                        name="foodChangeStatus"
+                        label={
+                          <span className="font-size-4">
+                            1. Recent food changes?
+                          </span>
+                        }
+                      >
+                        <Radio.Group
+                          name="foodChangeStatus"
+                          value={foodChangeStatus}
+                          onChange={(e) => {
+                            setFoodChangeStatus(e.target?.value);
+                          }}
+                        >
+                          <Radio value="Yes" className="font-size-4 me-5">
+                            <span className="font-size-4 font-weight-normal">
+                              Yes
+                            </span>
+                          </Radio>
+
+                          <Radio value="No" className="font-size-4">
+                            <span className="font-size-4 font-weight-normal">
+                              No
+                            </span>
+                          </Radio>
+                        </Radio.Group>
+                      </Form.Item>
+                    </Col>
+                    <Col
+                      xs={24}
+                      sm={24}
+                      md={24}
+                      lg={24}
+                      xl={24}
+                      className="pe-0 pe-md-3"
+                    >
+                      <Form.Item
+                        className="align-self-start w-100 "
+                        name="exposureToSickDogesStatus"
+                        label={
+                          <span className="font-size-4">
+                            2. Any recent exposure to other sick dogs?
+                          </span>
+                        }
+                      >
+                        <Radio.Group
+                          name="exposureToSickDogesStatus"
+                          value={exposureToSickDogesStatus}
+                          onChange={(e) => {
+                            setExposureToSickDogesStatus(e.target?.value);
+                          }}
+                        >
+                          <Radio value="Yes" className="font-size-4 me-5">
+                            <span className="font-size-4 font-weight-normal">
+                              Yes
+                            </span>
+                          </Radio>
+
+                          <Radio value="No" className="font-size-4">
+                            <span className="font-size-4 font-weight-normal">
+                              No
+                            </span>
+                          </Radio>
+                        </Radio.Group>
+                      </Form.Item>
+                    </Col>
+                  </Row>
                 </Col>
               </Row>
             </Form>
-            <Row className="my-5 pb-5 d-flex justify-content-center justify-content-lg-start">
+            <Row className="my-5 pb-5 d-flex justify-content-center justify-content-lg-end">
               <Col xs={20} sm={16} md={12} lg={12} xl={8}>
                 <Button
                   className="px-4 py-4  font-size-4 w-100 rounded-4"
@@ -1420,7 +1458,7 @@ const CheckDogHealthConditionPage = () => {
                 </Button>
               </Col>
             </Row>
-            <Row className="d-flex justify-content-end">
+            {/* <Row className="d-flex justify-content-end">
               <img
                 src={dogImg}
                 className="healthPredictionDogImg"
@@ -1430,7 +1468,7 @@ const CheckDogHealthConditionPage = () => {
                   objectFit: "cover",
                 }}
               />
-            </Row>
+            </Row> */}
           </div>
         </div>
       </div>
