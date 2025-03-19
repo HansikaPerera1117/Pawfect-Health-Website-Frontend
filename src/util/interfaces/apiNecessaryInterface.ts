@@ -25,5 +25,5 @@ export interface SignUpUserObj {
   email: string;
   password: string;
   lat: number;
-  lan: number;
+  lng: number;
 }

@@ -1,20 +1,15 @@
 import "../styles/login/loginStyles.scss";
 import "../styles/common/commonStyles.scss";
 import bgImage from "../assets/images/loginBg1.jpg";
-import * as constants from "../util/constants";
-// import { requestOTP, signUpService } from "../service/auth";
 import { useNavigate } from "react-router-dom";
 import { customToastMsg, handleError } from "../util/commonFunctions";
 import { useEffect, useState } from "react";
 import openImage from "../assets/images/line-md--watch.svg";
 import blueLogo from "../assets/images/logo/Logo.png";
 import svgTwo from "../assets/images/line-md--watch-off (1).svg";
-import { Button, GetProps, Input, Typography } from "antd";
-import { ArrowLeft } from "react-feather";
+import { Button } from "antd";
 import UserLocationMap from "../components/UserLocationMap";
 import { signUpService } from "../service/auth";
-
-type OTPProps = GetProps<typeof Input.OTP>;
 
 const SignUpPage = () => {
   const history = useNavigate();
@@ -22,10 +17,7 @@ const SignUpPage = () => {
   const [lastName, setLastName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<any>("");
-  const [OTPValue, setOTPValue] = useState<any>("");
-  const [error, setErrors] = useState<string>("");
   const [showPassword, setShowPassword] = useState<Boolean>(false);
-  const [showOTPForm, setShowOTPForm] = useState<Boolean>(false);
   const [passwordError, setPasswordError] = useState<string>("");
 
   const [selectedLocation, setSelectedLocation] = useState<{
@@ -38,11 +30,6 @@ const SignUpPage = () => {
     setShowPassword((prevState) => !prevState);
   };
 
-  const onChangeOTP: OTPProps["onChange"] = (text) => {
-    console.log("onChange:", text);
-    setOTPValue(text);
-  };
-
   const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setPassword(value);
@@ -52,7 +39,7 @@ const SignUpPage = () => {
     } else if (value.length > 50) {
       setPasswordError("Password must not exceed 50 characters.");
     } else {
-      setPasswordError(""); // Clear error when valid
+      setPasswordError("");
     }
   };
 
@@ -91,13 +78,12 @@ const SignUpPage = () => {
         firstName: firstName,
         lastName: lastName,
         lat: selectedLocation?.lat,
-        lan: selectedLocation?.lng,
+        lng: selectedLocation?.lng,
       };
 
       signUpService(data)
         .then((response) => {
           customToastMsg("Your account created successfully", 1);
-          setShowOTPForm(false);
           history(`/login`);
         })
         .catch((error) => {

@@ -5,6 +5,7 @@ import {
   countDescription,
   customToastMsg,
   handleError,
+  popUploader,
 } from "../util/commonFunctions";
 import dogImg from "../assets/images/healthPredictPageImg.png";
 import { useEffect, useState } from "react";
@@ -23,11 +24,14 @@ import NavBar from "../components/common/NavBar";
 import { DogBreedsBySize, DogBreedsEnum } from "../util/enums/dogBreedsEnum";
 import * as constants from "../util/constants";
 import { Cookies } from "typescript-cookie";
+import { useDispatch } from "react-redux";
+import axios from "axios";
 
 type FileType = Parameters<GetProp<UploadProps, "beforeUpload">>[0];
 
 const CheckDogHealthConditionPage = () => {
   const history = useNavigate();
+  const dispatch = useDispatch();
 
   const [dogName, setDogName] = useState<string>("");
   const [selectedDogBreed, setSelectedDogBreed] = useState<string>("");
@@ -93,7 +97,7 @@ const CheckDogHealthConditionPage = () => {
     setDogBreedList(dogBreedList);
   }, []);
 
-  const getHealthPrediction = () => {
+  const getHealthPrediction = async () => {
     let isValidate: boolean = false;
 
     dogName === ""
@@ -228,6 +232,11 @@ const CheckDogHealthConditionPage = () => {
       : (isValidate = true);
 
     if (isValidate) {
+    }
+
+    if (isValidate) {
+      popUploader(dispatch, true);
+
       const payload = {
         Breed: selectedDogBreed,
         "Age (years)": age,
@@ -260,15 +269,29 @@ const CheckDogHealthConditionPage = () => {
         "Exposure to Sick Dogs": exposureToSickDogesStatus,
       };
 
-      console.log(payload);
-      Cookies.set(constants.HEALTH_ISSUE, "healthIssuePrediction");
-      history("/health-prediction-result");
+      let access_token = Cookies.get(constants.ACCESS_TOKEN);
+      await axios
+        .post(`http://localhost:5000/predict`, payload, {
+          headers: {
+            Authorization: `Bearer ${access_token}`,
+          },
+        })
+        .then((res) => {
+          popUploader(dispatch, false);
+          //console.log(res);
+          Cookies.set(constants.HEALTH_ISSUE, JSON.stringify(res?.data));
+          history("/health-prediction-result");
+        })
+        .catch((err) => {
+          popUploader(dispatch, false);
+          handleError(err);
+        });
     }
   };
 
   return (
     <>
-      <NavBar pageName="bgNavBar"/>
+      <NavBar pageName="bgNavBar" />
       <div
         className="position-relative"
         style={{
@@ -531,11 +554,6 @@ const CheckDogHealthConditionPage = () => {
                           <Radio value="No" className="font-size-4 me-5">
                             <span className="font-size-4 font-weight-normal">
                               No
-                            </span>
-                          </Radio>
-                          <Radio value="NotShure" className="font-size-4">
-                            <span className="font-size-4 font-weight-normal">
-                              Not Shure
                             </span>
                           </Radio>
                         </Radio.Group>

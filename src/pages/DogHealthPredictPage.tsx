@@ -1,31 +1,33 @@
 import "../styles/login/loginStyles.scss";
 import "../styles/common/commonStyles.scss";
 import { useNavigate } from "react-router-dom";
-import { customToastMsg, handleError } from "../util/commonFunctions";
-import { useState } from "react";
-import {
-  Button,
-  Card,
-  Col,
-  Form,
-  message,
-  Row,
-  Upload,
-  UploadProps,
-} from "antd";
-import { InboxOutlined } from "@ant-design/icons";
+import { useEffect, useState } from "react";
+import { Button, Card, Col, Form, Row } from "antd";
 import NavBar from "../components/common/NavBar";
-import dogPawImage from "../assets/images/map.png";
-
+import * as constants from "../util/constants";
+import { Cookies } from "typescript-cookie";
 const DogHealthPredictPage = () => {
   const history = useNavigate();
 
-  const [form] = Form.useForm();
+  const [healthPredictionObj, setHealthPredictionObj] = useState<{
+    Description: string;
+    "Predicted Sickness": string;
+  }>();
+
+  useEffect(() => {
+    const storedHealthIssue = Cookies.get(constants.HEALTH_ISSUE) as string;
+
+    if (storedHealthIssue) {
+      const healthIssueObj = JSON.parse(storedHealthIssue);
+      setHealthPredictionObj(healthIssueObj);
+      console.log(healthIssueObj);
+    }
+  }, []);
 
   return (
     <>
       {" "}
-      <NavBar pageName="bgNavBar"/>
+      <NavBar pageName="bgNavBar" />
       <div
         className="position-relative"
         style={{
@@ -53,21 +55,11 @@ const DogHealthPredictPage = () => {
                 }}
               >
                 <h5 className="font-size-2 font-weight-normal">
-                  Your dog has<strong>{" Tick fever "}</strong>
+                  Your dog has{" "}
+                  <strong>{healthPredictionObj?.["Predicted Sickness"]}</strong>
                 </h5>
-                <p className="mt-4">
-                  Tick fever in dogs, also known as canine Rocky Mountain
-                  spotted fever (RMSF), is a serious, potentially fatal disease
-                  transmitted by infected ticks, and can be treated with
-                  antibiotics and supportive care. What is Tick Fever? Cause:
-                  Tick fever is caused by bacteria (like Rickettsia rickettsii)
-                  or protozoa (like Babesia or Ehrlichia) that are transmitted
-                  to dogs through the bite of infected ticks. Types: Two common
-                  types of tick fever in dogs are Rocky Mountain spotted fever
-                  and ehrlichiosis. Transmission: Dogs can become infected when
-                  bitten by an infected tick, which can pick up the infection
-                  from other animals. Severity: Tick fever can be
-                  life-threatening if not treated promptly. 
+                <p className="mt-4 font-size-4">
+                  {healthPredictionObj?.Description}
                 </p>
               </Card>
             </Row>
