@@ -2,8 +2,6 @@ import "../styles/login/loginStyles.scss";
 import "../styles/common/commonStyles.scss";
 import bgImage from "../assets/images/loginBg.jpg";
 import * as constants from "../util/constants";
-import pinkImage from "../assets/images/pink.png";
-// import { loginService } from "../service/auth";
 import { Cookies } from "typescript-cookie";
 import { useNavigate } from "react-router-dom";
 import { customToastMsg, handleError } from "../util/commonFunctions";
@@ -12,42 +10,47 @@ import openImage from "../assets/images/line-md--watch.svg";
 import blueLogo from "../assets/images/logo/Logo.png";
 import svgTwo from "../assets/images/line-md--watch-off (1).svg";
 import { Button } from "antd";
+import { loginService } from "../service/auth";
 
 const LoginPage = () => {
   const history = useNavigate();
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<any>("");
-  const [error, setErrors] = useState<string>("");
   const [showPassword, setShowPassword] = useState<Boolean>(false);
 
-  // const LoginFunction = () => {
-  //   console.log("email:", email);
-  //   console.log("password:", password);
+  const LoginFunction = () => {
+    let isValidate = false;
+    email === ""
+      ? customToastMsg("Enter your email", 2)
+      : password === ""
+      ? customToastMsg("Enter your password", 2)
+      : (isValidate = true);
 
-  //   const data = {
-  //     email: email.trim(),
-  //     password: password.trim(),
-  //   };
+    if (isValidate) {
+      const data = {
+        email: email.trim(),
+        password: password.trim(),
+      };
 
-  //   //setErrors("");
-  //   loginService(data)
-  //     .then((response) => {
-  //       Cookies.set(constants.ACCESS_TOKEN, response?.data?.access_token);
-  //       Cookies.set(constants.REFRESH_TOKEN, response?.data?.refresh_token);
-  //       // Cookies.set(constants.Expire_time, response?.tokenExpires);
-  //       Cookies.set("authUser", JSON.stringify(response?.data?.user));
-  //       // customToastMsg("login successfully", 1);
-  //       history(`/`);
-  //     })
-  //     .catch((error) => {
-  //       if (error.message) {
-  //         customToastMsg(error.message, 0);
-  //       }
-  //       error.message.email
-  //         ? customToastMsg(error.message.email, 0)
-  //         : error.message.password && customToastMsg(error.message.password, 0);
-  //     });
-  // };
+      loginService(data)
+        .then((response) => {
+          Cookies.set(constants.ACCESS_TOKEN, response?.data?.access_token);
+          Cookies.set(constants.REFRESH_TOKEN, response?.data?.refresh_token);
+          Cookies.set("authUser", JSON.stringify(response?.data?.user));
+          customToastMsg("Login successfully", 1);
+          history(`/`);
+        })
+        .catch((error) => {
+          if (error.message) {
+            customToastMsg(error.message, 0);
+          }
+          error.message.email
+            ? customToastMsg(error.message.email, 0)
+            : error.message.password &&
+              customToastMsg(error.message.password, 0);
+        });
+    }
+  };
 
   const eyeOnAction = () => {
     setShowPassword((prevState) => !prevState);
@@ -76,8 +79,8 @@ const LoginPage = () => {
               <form
                 onKeyDown={(e) => {
                   if (e.key === "Enter") {
-                    e.preventDefault(); // Prevent default form submission
-                    // LoginFunction();
+                    e.preventDefault();
+                    LoginFunction();
                   }
                 }}
               >
@@ -136,22 +139,16 @@ const LoginPage = () => {
                   <label className="form-check-label text-gray-secondary font-size-5">
                     Remember me
                   </label>
-                  {/* <a href="#" className="float-end text-decoration-none">
-                    Forgot password?
-                  </a> */}
                 </div>
 
                 <Button
-                  // onClick={LoginFunction}
+                  onClick={LoginFunction}
                   type="primary"
                   size="large"
                   className="w-100 mb-3 mb-3"
                 >
                   Sign In
                 </Button>
-                {/* <button type="button" className="btn btn-google w-100 mb-3">
-                  <i className="bi bi-google me-2"></i> Log in with Google
-                </button> */}
               </form>
 
               <p className="text-start text-muted signup-link">
