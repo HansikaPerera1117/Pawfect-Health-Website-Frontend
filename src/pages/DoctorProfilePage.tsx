@@ -5,23 +5,19 @@ import { useEffect, useState } from "react";
 import NavBar from "../components/common/NavBar";
 import { Avatar, Button, Col, Row } from "antd";
 import doctorImg from "../assets/images/vets/vet01.png";
+import * as constants from "../util/constants";
+import { Cookies } from "typescript-cookie";
 
 const DoctorProfilePage = () => {
   const history = useNavigate();
 
-  const location = useLocation();
-
   const [doctorId, setDoctorId] = useState<number>();
 
   useEffect(() => {
-    const { state } = location;
-    if (state && state.doctorId) {
-      const { doctorId } = state;
-      console.log(doctorId, "1010101010101011");
-      setDoctorId(doctorId);
-      // getOrderDetails(perpetratorId);
-    }
-  }, [location]);
+    const drId = parseInt(Cookies.get(constants.DOCTOR_ID) as string);
+    console.log(drId, "doctor id from cookies");
+    setDoctorId(drId);
+  }, []);
 
   return (
     <>
@@ -79,30 +75,24 @@ const DoctorProfilePage = () => {
                 <Row className="mt-2 text-center text-md-start">
                   <Col xs={24} sm={24} md={24} lg={10} xl={10} xxl={10}>
                     <h5 className=" font-size-4 font-weight-normal my-3">
-                      Full Name :{" "}
-                      {"productDetails?.cate gory?"}{" "}
+                      Full Name : {"productDetails?.cate gory?"}{" "}
                     </h5>
                     <h5 className=" font-size-4 font-weight-normal my-3">
-                      Full Name :{" "}
-                      {"productDetails?.cate gory?"}{" "}
+                      Full Name : {"productDetails?.cate gory?"}{" "}
                     </h5>
                     <h5 className=" font-size-4 font-weight-normal my-3">
-                      Full Name :{" "}
-                      {"productDetails?.cat egory?"}{" "}
+                      Full Name : {"productDetails?.cat egory?"}{" "}
                     </h5>
                   </Col>
                   <Col xs={24} sm={24} md={24} lg={10} xl={10} xxl={10}>
                     <h5 className=" font-size-4 font-weight-normal my-3">
-                      Full Name :{" "}
-                      {"productDetails?.cate gory?"}{" "}
+                      Full Name : {"productDetails?.cate gory?"}{" "}
                     </h5>
                     <h5 className=" font-size-4 font-weight-normal my-3">
-                      Full Name :{" "}
-                      {"productDetails?.cat egory?"}{" "}
+                      Full Name : {"productDetails?.cat egory?"}{" "}
                     </h5>
                     <h5 className=" font-size-4 font-weight-normal my-3">
-                      Full Name :{" "}
-                      {"productDetails?.ca tegory?"}{" "}
+                      Full Name : {"productDetails?.ca tegory?"}{" "}
                     </h5>
                   </Col>
                 </Row>
@@ -137,9 +127,7 @@ const DoctorProfilePage = () => {
                   size="large"
                   type="default"
                   onClick={() => {
-                    history(`/chat/${doctorId}`, {
-                      state: { doctorId: doctorId },
-                    });
+                    history(`/chat`);
                   }}
                 >
                   Start Chat with {"Dr name"}
@@ -159,9 +147,7 @@ const DoctorProfilePage = () => {
                   size="large"
                   type="default"
                   onClick={() => {
-                    history(`/make-appointment/${doctorId}`, {
-                      state: { doctorId: doctorId },
-                    });
+                    history(`/make-appointment/${doctorId}`);
                   }}
                 >
                   Make Appointment to {"Dr name "}

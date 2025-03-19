@@ -18,10 +18,11 @@ import {
 import doctorImg from "../assets/images/vets/vet01.png";
 import dayjs from "dayjs";
 import moment from "moment";
+import * as constants from "../util/constants";
+import { Cookies } from "typescript-cookie";
 
 const MakeDoctorAppointmentPage = () => {
   const history = useNavigate();
-  const location = useLocation();
 
   const [name, setName] = useState<string>("");
   const [contactNo, setContactNo] = useState<string>("");
@@ -30,21 +31,15 @@ const MakeDoctorAppointmentPage = () => {
 
   const [doctorId, setDoctorId] = useState<number>();
 
-
   const [form] = Form.useForm();
 
   const format = "HH:mm";
 
-
   useEffect(() => {
-    const { state } = location;
-    if (state && state.doctorId) {
-      const { doctorId } = state;
-      console.log(doctorId, "appoinment");
-      setDoctorId(doctorId);
-      // getOrderDetails(perpetratorId);
-    }
-  }, [location]);
+    const drId = parseInt(Cookies.get(constants.DOCTOR_ID) as string);
+    console.log(drId, "doctor id from cookies");
+    setDoctorId(drId);
+  }, []);
 
   const onChangeAppointmentDate: DatePickerProps["onChange"] = (
     date,
@@ -97,7 +92,15 @@ const MakeDoctorAppointmentPage = () => {
                   style={{ objectFit: "cover", objectPosition: "center" }}
                 />
               </Col>
-              <Col xs={24} sm={24} md={14} lg={18} xl={19} xxl={20} className="ps-0 ps-lg-5">
+              <Col
+                xs={24}
+                sm={24}
+                md={14}
+                lg={18}
+                xl={19}
+                xxl={20}
+                className="ps-0 ps-lg-5"
+              >
                 <h1 className="font-size-1 mainText font-weight-semi-bold   text-center text-md-start font-family-2 m-0">
                   Doctor name
                 </h1>
@@ -108,30 +111,24 @@ const MakeDoctorAppointmentPage = () => {
                 <Row className="mt-2 text-center text-md-start">
                   <Col xs={24} sm={24} md={24} lg={10} xl={10} xxl={10}>
                     <h5 className=" font-size-4 font-weight-normal my-3">
-                      Full Name :{" "}
-                      {"productDetails?.categ ory"}{" "}
+                      Full Name : {"productDetails?.categ ory"}{" "}
                     </h5>
                     <h5 className=" font-size-4 font-weight-normal my-3">
-                      Full Name :{" "}
-                      {"productDetails?.ca tegory"}{" "}
+                      Full Name : {"productDetails?.ca tegory"}{" "}
                     </h5>
                     <h5 className=" font-size-4 font-weight-normal my-3">
-                      Full Name :{" "}
-                      {"productDetails?.cat egory"}{" "}
+                      Full Name : {"productDetails?.cat egory"}{" "}
                     </h5>
                   </Col>
                   <Col xs={24} sm={24} md={24} lg={10} xl={10} xxl={10}>
                     <h5 className=" font-size-4 font-weight-normal my-3">
-                      Full Name :{" "}
-                      {"productDetails?.cate gory"}{" "}
+                      Full Name : {"productDetails?.cate gory"}{" "}
                     </h5>
                     <h5 className=" font-size-4 font-weight-normal my-3">
-                      Full Name :{" "}
-                      {"productDetails?.cat egory"}{" "}
+                      Full Name : {"productDetails?.cat egory"}{" "}
                     </h5>
                     <h5 className=" font-size-4 font-weight-normal my-3">
-                      Full Name :{" "}
-                      {"productDetails?.c ategory"}{" "}
+                      Full Name : {"productDetails?.c ategory"}{" "}
                     </h5>
                   </Col>
                 </Row>
@@ -227,7 +224,7 @@ const MakeDoctorAppointmentPage = () => {
                       />
                     </Form.Item>
                   </Col>
-                  <Col xs={24} sm={24} md={8}  className="ps-0 ps-md-3">
+                  <Col xs={24} sm={24} md={8} className="ps-0 ps-md-3">
                     <Form.Item
                       name="appointmentTime"
                       label={<span className="font-size-4">Time</span>}

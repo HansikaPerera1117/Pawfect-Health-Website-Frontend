@@ -7,7 +7,8 @@ import {
 import { Button } from "antd";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import * as constants from "../util/constants";
+import { Cookies } from "typescript-cookie";
 import "../styles/common/map/googleMap.scss";
 
 const containerStyle = {
@@ -82,11 +83,10 @@ const DoctorMap: React.FC<GoogleMapViewProps> = ({ doctors, userLocation }) => {
               className="py-3 font-size-5 w-100 rounded-3"
               size="middle"
               type="default"
-              onClick={() =>
-                navigate(`/doctor-profile/${selectedDoctor?.id}`, {
-                  state: { doctorId: selectedDoctor?.id },
-                })
-              }
+              onClick={() => {
+                Cookies.set(constants.DOCTOR_ID, selectedDoctor?.id);
+                navigate(`/doctor-profile/${selectedDoctor?.id}`);
+              }}
             >
               View Details
             </Button>

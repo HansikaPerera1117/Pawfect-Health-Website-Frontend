@@ -2,16 +2,18 @@ import { useEffect, useState } from "react";
 import { Avatar, Button, Col, Input, Row } from "antd";
 import { CaretLeftOutlined, SendOutlined } from "@ant-design/icons";
 import { useLocation, useNavigate } from "react-router-dom";
-import doctorImg from "../assets/images/vets/vet01.png";
+import userImg from "../assets/images/userImg-2.jpg";
 import chantBg from "../assets/images/chantBG.png";
 import "../styles/chatPageStyles.scss";
 import { ArrowLeft } from "react-feather";
+import * as constants from "../util/constants";
+import { Cookies } from "typescript-cookie";
 
 const UserChatPage = () => {
   const history = useNavigate();
-  const location = useLocation();
 
   const [doctorId, setDoctorId] = useState<number>();
+  const [dogOwnerId, setDogOwnerId] = useState<number>();
   const [messages, setMessages] = useState([
     { id: 1, sender: "doctor", text: "HI", time: "20:22" },
     {
@@ -28,15 +30,31 @@ const UserChatPage = () => {
     },
   ]);
   const [message, setMessage] = useState("");
+  const [isDoctorLoggedIn, setIsDoctorLoggedIn] = useState(false);
 
   useEffect(() => {
-    const { state } = location;
-    if (state && state.doctorId) {
-      const { doctorId } = state;
-      console.log(doctorId, "chat");
-      setDoctorId(doctorId);
+    const drId = Cookies.get(constants.DOCTOR_ID)
+      ? parseInt(Cookies.get(constants.DOCTOR_ID) as string)
+      : undefined;
+    console.log(drId, "doctor id from cookies");
+    setDoctorId(drId);
+
+    const ownerId = Cookies.get(constants.DOG_OWNER_ID)
+      ? parseInt(Cookies.get(constants.DOG_OWNER_ID) as string)
+      : undefined;
+    console.log(ownerId, "owner id from cookies");
+    setDogOwnerId(ownerId);
+
+    const authUserString = JSON.parse(Cookies.get("authUser") as string);
+
+    // setIsDoctorLoggedIn(authUserString?.user === "doctor" ? true : false);
+
+    if (authUserString?.user === "doctor") {
+      // api call to get doctorge chat tika
+    } else {
+      // api call to get ownerge chat tika
     }
-  }, [location]);
+  }, []);
 
   const sendMessage = () => {
     if (message.trim()) {
@@ -81,16 +99,22 @@ const UserChatPage = () => {
             size={30}
             className="me-3"
             onClick={() => {
-              history(`/doctor-profile/${doctorId}`);
+              isDoctorLoggedIn
+                ? history(`/`)
+                : history(`/doctor-profile/${doctorId}`);
             }}
           />
-          <Avatar src={doctorImg} size={50} className="border border-dark" />
-          <div className="ms-3">
-            <h3 className="font-size-3 m-0">Dr Jhonne Doily</h3>
-            <span className="font-size-5 text-gray">
-              Specialist of abcd efgh
-            </span>
-          </div>
+          {(dogOwnerId || doctorId) && (
+            <div className="d-flex">
+              <Avatar src={userImg} size={50} className="border border-dark" />
+              <div className="ms-3">
+                <h3 className="font-size-3 m-0">Dr Jhonne Doily</h3>
+                <span className="font-size-5 text-gray">
+                  Specialist of abcd efgh
+                </span>
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Chat Messages */}
@@ -175,15 +199,17 @@ const UserChatPage = () => {
           flexDirection: "column",
         }}
       >
-        <Button
-          className=" rounded-4 w-100 mb-4"
-          type="default"
-          onClick={() => {
-            history("/nearest-doctor");
-          }}
-        >
-          Find Nearby Doctor To Start New Chat
-        </Button>
+        {!isDoctorLoggedIn && (
+          <Button
+            className=" rounded-4 w-100 mb-4"
+            type="default"
+            onClick={() => {
+              history("/nearest-doctor");
+            }}
+          >
+            Find Nearby Doctor To Start New Chat
+          </Button>
+        )}
 
         <Input
           placeholder="Search..."
@@ -210,15 +236,16 @@ const UserChatPage = () => {
                 cursor: "pointer",
               }}
             >
-              <Avatar
-                src={doctorImg}
-                size={40}
-                className="border border-dark"
+              <img
+                src={userImg}
+                height={40}
+                width={40}
+                className="border border-dark rounded-circle"
               />
               <div style={{ marginLeft: "10px", flex: 1 }}>
-                <h4 style={{ margin: 0, fontSize: "14px" }}>Dr Jhonne Doily</h4>
+                <h4 style={{ margin: 0, fontSize: "14px" }}>chat name</h4>
                 <p style={{ margin: 0, fontSize: "12px", color: "#666" }}>
-                  Unleashing the Power of AI...
+                  text
                 </p>
               </div>
             </div>

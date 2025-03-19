@@ -11,6 +11,7 @@ import { Button, Popover } from "antd";
 import userIcon from "../../assets/images/icons/solar_user-bold.png";
 
 import { LogoutOutlined } from "@ant-design/icons";
+import { User } from "react-feather";
 
 interface Props {
   pageName?: string;
@@ -20,8 +21,13 @@ const NavBar = ({ pageName }: Props) => {
   const navigate = useNavigate();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [isDoctorLoggedIn, setIsDoctorLoggedIn] = useState(false);
 
   useEffect(() => {
+    const authUserString = JSON.parse(Cookies.get("authUser") as string);
+
+    // setIsDoctorLoggedIn(authUserString?.user === "doctor" ? true : false);
+
     const handleScroll = () => {
       if (window.scrollY > 150) {
         setScrolled(true);
@@ -32,7 +38,6 @@ const NavBar = ({ pageName }: Props) => {
 
     window.addEventListener("scroll", handleScroll);
 
-    // Cleanup the event listener
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
@@ -42,33 +47,6 @@ const NavBar = ({ pageName }: Props) => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
-  const handleStartListingClick = () => {
-    console.log(!Cookies.get(constants.ACCESS_TOKEN));
-
-    if (!Cookies.get(constants.ACCESS_TOKEN)) {
-      navigate("/login");
-    } else {
-      const propertyId = getDecryptedCookie(constants.PROPERTY_ID);
-      console.log("propertyId :", propertyId);
-
-      if (propertyId) {
-        navigate("/draft-listing", {
-          state: { fromLocation: "NavBarBtn" },
-        });
-      } else {
-        navigate("/plan-selection");
-      }
-    }
-  };
-
-  const handleListedProperties = () => {
-    if (Cookies.get(constants.ACCESS_TOKEN)) {
-      navigate("/listed-properties");
-    } else {
-      navigate("/login");
-    }
-  };
-
   const content = (
     <div>
       <p
@@ -76,8 +54,16 @@ const NavBar = ({ pageName }: Props) => {
         className="mb-1 mx-2 hover-effect cursor-setUp"
         onClick={() => logOut()}
       >
-        <LogoutOutlined style={{ marginRight: "8px" }} />
+        <LogoutOutlined style={{ marginRight: "12px" }} />
         Log Out
+      </p>
+      <p
+        style={{ color: "#6BAED6" }}
+        className="mb-1 mx-2 hover-effect cursor-setUp"
+        onClick={() => navigate("/my-profile")}
+      >
+        <User size={18} className="m-0 me-2" />
+        My Profile
       </p>
     </div>
   );
@@ -109,36 +95,77 @@ const NavBar = ({ pageName }: Props) => {
           <div className="d-flex align-items-center">
             {Cookies.get("authUser") ? (
               <ul className="list-inline nav_itemList">
-                <li
-                  className="list-inline-item"
-                  onClick={() => {
-                    navigate("/");
-                  }}
-                >
-                  Home
-                </li>
-                <li
-                  className="list-inline-item"
-                  onClick={handleListedProperties}
-                >
-                  About Us
-                </li>
+                {!isDoctorLoggedIn && (
+                  <li
+                    className="list-inline-item"
+                    onClick={() => {
+                      navigate("/");
+                    }}
+                  >
+                    Home
+                  </li>
+                )}
+                {!isDoctorLoggedIn && (
+                  <li
+                    className="list-inline-item"
+                    onClick={() => {
+                      navigate("/nearest-doctor");
+                    }}
+                  >
+                    Find Nearest Doctor
+                  </li>
+                )}
+                {isDoctorLoggedIn && (
+                  <li
+                    className="list-inline-item"
+                    onClick={() => {
+                      navigate("/appointments");
+                    }}
+                  >
+                    View Appointments
+                  </li>
+                )}
+                {isDoctorLoggedIn && (
+                  <li
+                    className="list-inline-item"
+                    onClick={() => {
+                      navigate("/chat");
+                    }}
+                  >
+                    Chats
+                  </li>
+                )}
               </ul>
             ) : (
               ""
             )}
 
-            {Cookies.get("authUser") ? (
-              <Button
-                className="start_Listing_button"
-                type="default"
-                onClick={handleStartListingClick}
-              >
-                Get Start
-              </Button>
-            ) : (
-              ""
-            )}
+            {Cookies.get("authUser")
+              ? !isDoctorLoggedIn && (
+                  <Button
+                    className="start_Listing_button me-3"
+                    type="default"
+                    onClick={() => {
+                      navigate("/health-prediction");
+                    }}
+                  >
+                    Check Health Issues
+                  </Button>
+                )
+              : ""}
+            {Cookies.get("authUser")
+              ? !isDoctorLoggedIn && (
+                  <Button
+                    className="start_Listing_button"
+                    type="default"
+                    onClick={() => {
+                      navigate("/emotion-prediction");
+                    }}
+                  >
+                    Check Emotions
+                  </Button>
+                )
+              : ""}
 
             {!Cookies.get("authUser") ? (
               <div>
@@ -192,20 +219,70 @@ const NavBar = ({ pageName }: Props) => {
         <ul>
           {Cookies.get("authUser") ? (
             <ul className="list-inline nav_itemList">
-              <li className="list-inline-item" onClick={handleListedProperties}>
-                Listed Properties
-              </li>
-              <li className="list-inline-item" onClick={handleListedProperties}>
-                Listed Properties
-              </li>
-              <li>
-                <Button
-                  className="start_Listing_button"
-                  onClick={handleStartListingClick}
+              {!isDoctorLoggedIn && (
+                <li
+                  className="list-inline-item"
+                  onClick={() => {
+                    navigate("/");
+                  }}
                 >
-                  Get Start
-                </Button>
-              </li>
+                  Home
+                </li>
+              )}
+              {!isDoctorLoggedIn && (
+                <li
+                  className="list-inline-item"
+                  onClick={() => {
+                    navigate("/nearest-doctor");
+                  }}
+                >
+                  Find Nearest Doctor
+                </li>
+              )}
+              {isDoctorLoggedIn && (
+                <li
+                  className="list-inline-item"
+                  onClick={() => {
+                    navigate("/appointments");
+                  }}
+                >
+                  View Appointments
+                </li>
+              )}
+              {isDoctorLoggedIn && (
+                <li
+                  className="list-inline-item"
+                  onClick={() => {
+                    navigate("/chat");
+                  }}
+                >
+                  Chat
+                </li>
+              )}
+              {!isDoctorLoggedIn && (
+                <li>
+                  <Button
+                    className="start_Listing_button"
+                    onClick={() => {
+                      navigate("/health-prediction");
+                    }}
+                  >
+                    Check Health Issues
+                  </Button>
+                </li>
+              )}
+              {!isDoctorLoggedIn && (
+                <li>
+                  <Button
+                    className="start_Listing_button"
+                    onClick={() => {
+                      navigate("/emotion-prediction");
+                    }}
+                  >
+                    Check Emotions
+                  </Button>
+                </li>
+              )}
             </ul>
           ) : (
             ""

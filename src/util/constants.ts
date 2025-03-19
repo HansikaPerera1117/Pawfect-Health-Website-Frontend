@@ -10,7 +10,5 @@ export const CSRF_TOKEN_KEY = "csdgg3345drffdrf";
 export const CSRF_TOKEN_TIMESTAMP_KEY = "vdfesfredttt";
 export const TOKEN_EXPIRY_TIME = 24 * 60 * 60 * 1000;
 
-export const PROPERTY_ID = "P2FsdGVkX1+u/BM3EmwX85YKezut1DRsh5EyIUTuZlc=";
-export const PLAN_ID = "PLUExBTl9JRA==";
-export const ROOM_ID = "Rmcsrdrggr3r3r4dsjanasj";
-export const LOCATION_OBJECT = "Lomxsixywncwjehjjct";
+export const DOCTOR_ID = "D2FsdGVkX1+u/BM3EmwX85YKezut1DRsh5EyIUTuZlcD=";
+export const DOG_OWNER_ID = "DO2FsdGVkX1gf554/$g4jfd5f6YKez5ut1DRsh5EyIUTuZlcR=";
