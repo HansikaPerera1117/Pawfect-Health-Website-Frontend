@@ -21,6 +21,8 @@ import {
 } from "antd";
 import NavBar from "../components/common/NavBar";
 import { DogBreedsBySize, DogBreedsEnum } from "../util/enums/dogBreedsEnum";
+import * as constants from "../util/constants";
+import { Cookies } from "typescript-cookie";
 
 type FileType = Parameters<GetProp<UploadProps, "beforeUpload">>[0];
 
@@ -259,14 +261,14 @@ const CheckDogHealthConditionPage = () => {
       };
 
       console.log(payload);
-
+      Cookies.set(constants.HEALTH_ISSUE, "healthIssuePrediction");
       history("/health-prediction-result");
     }
   };
 
   return (
     <>
-      <NavBar />
+      <NavBar pageName="bgNavBar"/>
       <div
         className="position-relative"
         style={{

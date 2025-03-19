@@ -30,6 +30,7 @@ const MakeDoctorAppointmentPage = () => {
   const [appointmentTime, setAppointmentTime] = useState<string>("");
 
   const [doctorId, setDoctorId] = useState<number>();
+  const [dogHealthIssueObject, setDogHealthIssueObject] = useState<{}>();
 
   const [form] = Form.useForm();
 
@@ -39,6 +40,9 @@ const MakeDoctorAppointmentPage = () => {
     const drId = parseInt(Cookies.get(constants.DOCTOR_ID) as string);
     console.log(drId, "doctor id from cookies");
     setDoctorId(drId);
+
+    const healthIssue = Cookies.get(constants.HEALTH_ISSUE);
+    setDogHealthIssueObject(healthIssue ? healthIssue : undefined);
   }, []);
 
   const onChangeAppointmentDate: DatePickerProps["onChange"] = (
@@ -47,7 +51,6 @@ const MakeDoctorAppointmentPage = () => {
   ) => {
     const formatDate = moment(dateString).format("YYYY-MM-DD");
     console.log(formatDate);
-
     setAppointmentDate(formatDate);
   };
 
@@ -56,14 +59,37 @@ const MakeDoctorAppointmentPage = () => {
     timeString
   ) => {
     console.log(timeString);
-
     setAppointmentTime(timeString);
+  };
+
+  const handleMakeAppointment = () => {
+    let isValidate: boolean = false;
+
+    name === ""
+      ? customToastMsg("Please enter your name", 2)
+      : contactNo === ""
+      ? customToastMsg("Please enter your contact no", 2)
+      : appointmentDate === ""
+      ? customToastMsg("Please select appointment date", 2)
+      : appointmentTime === ""
+      ? customToastMsg("Please select appointment time", 2)
+      : (isValidate = true);
+
+    if (isValidate) {
+      const payload = {
+        name: name,
+        contactNo: contactNo,
+        date: appointmentDate,
+        time: appointmentTime,
+      };
+      Cookies.remove(constants.HEALTH_ISSUE);
+    }
   };
 
   return (
     <>
       {" "}
-      <NavBar />
+      <NavBar pageName="bgNavBar" />
       <div
         className="position-relative"
         style={{
@@ -134,36 +160,38 @@ const MakeDoctorAppointmentPage = () => {
                 </Row>
               </Col>
             </Row>
-            <Row className="d-flex justify-content-center">
-              <Card
-                className="text-center my-5 rounded-5"
-                style={{
-                  width: "100%",
-                  background:
-                    "linear-gradient(180deg, rgba(107, 174, 214, 0.35) 67%, rgba(247, 220, 111, 0.23) 100%)",
-                }}
-              >
-                <h5 className="font-size-2 font-weight-normal">
-                  Pawfect Health predicted my dog has
-                  <strong>{" Tick fever "}</strong>
-                </h5>
-                <p className="mt-4">
-                  Tick fever in dogs, also known as canine Rocky Mountain
-                  spotted fever (RMSF), is a serious, potentially fatal disease
-                  transmitted by infected ticks, and can be treated with
-                  antibiotics and supportive care. What is Tick Fever? Cause:
-                  Tick fever is caused by bacteria (like Rickettsia rickettsii)
-                  or protozoa (like Babesia or Ehrlichia) that are transmitted
-                  to dogs through the bite of infected ticks. Types: Two common
-                  types of tick fever in dogs are Rocky Mountain spotted fever
-                  and ehrlichiosis. Transmission: Dogs can become infected when
-                  bitten by an infected tick, which can pick up the infection
-                  from other animals. Severity: Tick fever can be
-                  life-threatening if not treated promptly. 
-                </p>
-              </Card>
-            </Row>
-            <Row>
+            {dogHealthIssueObject && (
+              <Row className="d-flex justify-content-center mt-5">
+                <Card
+                  className="text-center rounded-5"
+                  style={{
+                    width: "100%",
+                    background:
+                      "linear-gradient(180deg, rgba(107, 174, 214, 0.35) 67%, rgba(247, 220, 111, 0.23) 100%)",
+                  }}
+                >
+                  <h5 className="font-size-2 font-weight-normal">
+                    Pawfect Health predicted my dog has
+                    <strong>{" Tick fever "}</strong>
+                  </h5>
+                  <p className="mt-4">
+                    Tick fever in dogs, also known as canine Rocky Mountain
+                    spotted fever (RMSF), is a serious, potentially fatal
+                    disease transmitted by infected ticks, and can be treated
+                    with antibiotics and supportive care. What is Tick Fever?
+                    Cause: Tick fever is caused by bacteria (like Rickettsia
+                    rickettsii) or protozoa (like Babesia or Ehrlichia) that are
+                    transmitted to dogs through the bite of infected ticks.
+                    Types: Two common types of tick fever in dogs are Rocky
+                    Mountain spotted fever and ehrlichiosis. Transmission: Dogs
+                    can become infected when bitten by an infected tick, which
+                    can pick up the infection from other animals. Severity: Tick
+                    fever can be life-threatening if not treated promptly. 
+                  </p>
+                </Card>
+              </Row>
+            )}
+            <Row className="mt-5">
               <h5 className="font-size-4 font-weight-medium mb-4">
                 Appointment Details
               </h5>
@@ -250,7 +278,7 @@ const MakeDoctorAppointmentPage = () => {
                   className="px-4 py-4  font-size-4 w-100 rounded-4"
                   size="large"
                   type="default"
-                  // onClick={handleStartListingClick}
+                  onClick={handleMakeAppointment}
                 >
                   Make Appointment to {"Dr name "}
                 </Button>

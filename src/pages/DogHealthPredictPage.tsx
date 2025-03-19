@@ -25,7 +25,7 @@ const DogHealthPredictPage = () => {
   return (
     <>
       {" "}
-      <NavBar />
+      <NavBar pageName="bgNavBar"/>
       <div
         className="position-relative"
         style={{

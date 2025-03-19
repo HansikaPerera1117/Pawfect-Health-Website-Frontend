@@ -45,7 +45,7 @@ const HomePage = () => {
             xxl={14}
             className="containerBox d-flex flex-column justify-content-center align-items-center align-items-lg-start"
           >
-            <div className="mainTextDiv text-content">
+            <div className="mainTextDiv text-content mt-4 mt-lg-0">
               <p className="font-size-5 font-weight-light text-center text-lg-start m-0 me-0 me-lg-5 ">
                 Empower your dog’s health with AI-driven tools for early illness
                 detection, and emotional well-being insights plans—all in one
@@ -62,14 +62,27 @@ const HomePage = () => {
                 their emotional needs, we’ve got it covered. Join us in
                 redefining pet healthcare—one wag at a time
               </p>
-              <div className="button-container  my-4 d-flex justify-content-center justify-content-lg-start">
+              <div className="button-container  my-4 d-flex  flex-column  flex-sm-row justify-content-center justify-content-lg-start">
                 <Button
-                  className="secondary-button px-5"
+                  className="px-5 me-0 me-sm-3 my-2 my-sm-0"
                   size="large"
                   type="primary"
+                  onClick={() => {
+                    history("/health-prediction");
+                  }}
                 >
-                  Get Started
+                  Check Health Issues
                 </Button>
+                {/* <Button
+                  className="secondary-button px-5 my-3 my-sm-0"
+                  size="large"
+                  type="primary"
+                  onClick={() => {
+                    history("/emotion-prediction");
+                  }}
+                >
+                  Check Emotions
+                </Button> */}
               </div>
             </div>
           </Col>
@@ -524,8 +537,23 @@ const HomePage = () => {
               </p>
               <div className="d-flex flex-column align-items-center align-items-lg-start justify-content-center">
                 <img src={Logo} alt="logo" height={140} width="auto" />
-                <Button className="py-4 px-4 rounded-3 my-5" type="default">
-                  Get Start With Pawfect Health
+                <Button
+                  className="py-4 px-4 rounded-3 mt-5 mb-2"
+                  type="default"
+                  onClick={() => {
+                    history("/health-prediction");
+                  }}
+                >
+                  Check Health Issues With Pawfect Health
+                </Button>
+                <Button
+                  className="secondary-button py-4 px-4 rounded-3 mt-2 mb-5"
+                  type="primary"
+                  onClick={() => {
+                    history("/emotion-prediction");
+                  }}
+                >
+                  Check Emotions With Pawfect Health
                 </Button>
               </div>
             </Col>

@@ -12,3 +12,4 @@ export const TOKEN_EXPIRY_TIME = 24 * 60 * 60 * 1000;
 
 export const DOCTOR_ID = "D2FsdGVkX1+u/BM3EmwX85YKezut1DRsh5EyIUTuZlcD=";
 export const DOG_OWNER_ID = "DO2FsdGVkX1gf554/$g4jfd5f6YKez5ut1DRsh5EyIUTuZlcR=";
+export const HEALTH_ISSUE = "Hl5t2hO2FsdGVkX1gf554/$g4jf5ut1DRsh5EyIUTuZl25cs2hrUE=";

@@ -26,7 +26,7 @@ const MyProfilePage = () => {
   return (
     <>
       {" "}
-      <NavBar />
+      <NavBar pageName="bgNavBar"/>
       <div
         className="position-relative"
         style={{

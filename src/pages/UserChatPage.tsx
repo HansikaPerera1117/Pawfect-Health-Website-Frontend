@@ -54,6 +54,8 @@ const UserChatPage = () => {
     } else {
       // api call to get ownerge chat tika
     }
+
+    Cookies.remove(constants.HEALTH_ISSUE);
   }, []);
 
   const sendMessage = () => {

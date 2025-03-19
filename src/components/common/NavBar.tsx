@@ -72,10 +72,22 @@ const NavBar = ({ pageName }: Props) => {
     <nav
       style={{
         height: 100,
-        background: scrolled ? "rgba(255, 255, 255, 0.77)" : "transparent",
+        background: scrolled
+          ? "rgba(255, 255, 255, 0.77)"
+          : pageName === "bgNavBar"
+          ? "rgba(255, 255, 255, 0.18)"
+          : "transparent",
         boxShadow: scrolled ? "0 4px 30px rgba(255, 255, 255, 0.1)" : "none",
-        backdropFilter: scrolled ? "blur(8.2px)" : "none",
-        WebkitBackdropFilter: scrolled ? "blur(8.2px)" : "none",
+        backdropFilter: scrolled
+          ? "blur(8.2px)"
+          : pageName === "bgNavBar"
+          ? "blur(17.8px)"
+          : "none",
+        WebkitBackdropFilter: scrolled
+          ? "blur(8.2px)"
+          : pageName === "bgNavBar"
+          ? "blur(17.8px)"
+          : "none",
         transition: "all 0.3s ease",
       }}
       className={`w-100 d-flex justify-content-center containerPadding align-items-center`}
@@ -112,7 +124,17 @@ const NavBar = ({ pageName }: Props) => {
                       navigate("/nearest-doctor");
                     }}
                   >
-                    Find Nearest Doctor
+                    Nearest Doctor
+                  </li>
+                )}
+                {!isDoctorLoggedIn && (
+                  <li
+                    className="list-inline-item"
+                    onClick={() => {
+                      navigate("/my-appointments");
+                    }}
+                  >
+                    Appointments
                   </li>
                 )}
                 {isDoctorLoggedIn && (
@@ -215,7 +237,7 @@ const NavBar = ({ pageName }: Props) => {
         </button>
       )}
 
-      <aside className={`sidebar ${isSidebarOpen ? "open" : ""}`}>
+      <aside className={`sidebar ${isSidebarOpen ? "open" : ""}`} style={{height:"100vh"}}>
         <ul>
           {Cookies.get("authUser") ? (
             <ul className="list-inline nav_itemList">
@@ -237,6 +259,16 @@ const NavBar = ({ pageName }: Props) => {
                   }}
                 >
                   Find Nearest Doctor
+                </li>
+              )}
+              {!isDoctorLoggedIn && (
+                <li
+                  className="list-inline-item"
+                  onClick={() => {
+                    navigate("/my-appointments");
+                  }}
+                >
+                  Appointments
                 </li>
               )}
               {isDoctorLoggedIn && (
